@@ -1,0 +1,16 @@
+D:\15.1\数据库概论\WeiboAnnualReportApp\WeiboAnnualReportApp\bin\Debug\net6.0-windows7.0\WeiboAnnualReportApp.exe
+D:\15.1\数据库概论\WeiboAnnualReportApp\WeiboAnnualReportApp\bin\Debug\net6.0-windows7.0\WeiboAnnualReportApp.deps.json
+D:\15.1\数据库概论\WeiboAnnualReportApp\WeiboAnnualReportApp\bin\Debug\net6.0-windows7.0\WeiboAnnualReportApp.runtimeconfig.json
+D:\15.1\数据库概论\WeiboAnnualReportApp\WeiboAnnualReportApp\bin\Debug\net6.0-windows7.0\WeiboAnnualReportApp.dll
+D:\15.1\数据库概论\WeiboAnnualReportApp\WeiboAnnualReportApp\bin\Debug\net6.0-windows7.0\WeiboAnnualReportApp.pdb
+D:\15.1\数据库概论\WeiboAnnualReportApp\WeiboAnnualReportApp\obj\Debug\net6.0-windows7.0\WeiboAnnualReportApp.FormMain.resources
+D:\15.1\数据库概论\WeiboAnnualReportApp\WeiboAnnualReportApp\obj\Debug\net6.0-windows7.0\WeiboAnnualReportApp.csproj.GenerateResource.cache
+D:\15.1\数据库概论\WeiboAnnualReportApp\WeiboAnnualReportApp\obj\Debug\net6.0-windows7.0\WeiboAnnualReportApp.GeneratedMSBuildEditorConfig.editorconfig
+D:\15.1\数据库概论\WeiboAnnualReportApp\WeiboAnnualReportApp\obj\Debug\net6.0-windows7.0\WeiboAnnualReportApp.AssemblyInfoInputs.cache
+D:\15.1\数据库概论\WeiboAnnualReportApp\WeiboAnnualReportApp\obj\Debug\net6.0-windows7.0\WeiboAnnualReportApp.AssemblyInfo.cs
+D:\15.1\数据库概论\WeiboAnnualReportApp\WeiboAnnualReportApp\obj\Debug\net6.0-windows7.0\WeiboAnnualReportApp.csproj.CoreCompileInputs.cache
+D:\15.1\数据库概论\WeiboAnnualReportApp\WeiboAnnualReportApp\obj\Debug\net6.0-windows7.0\WeiboAnnualReportApp.dll
+D:\15.1\数据库概论\WeiboAnnualReportApp\WeiboAnnualReportApp\obj\Debug\net6.0-windows7.0\refint\WeiboAnnualReportApp.dll
+D:\15.1\数据库概论\WeiboAnnualReportApp\WeiboAnnualReportApp\obj\Debug\net6.0-windows7.0\WeiboAnnualReportApp.pdb
+D:\15.1\数据库概论\WeiboAnnualReportApp\WeiboAnnualReportApp\obj\Debug\net6.0-windows7.0\WeiboAnnualReportApp.genruntimeconfig.cache
+D:\15.1\数据库概论\WeiboAnnualReportApp\WeiboAnnualReportApp\obj\Debug\net6.0-windows7.0\ref\WeiboAnnualReportApp.dll

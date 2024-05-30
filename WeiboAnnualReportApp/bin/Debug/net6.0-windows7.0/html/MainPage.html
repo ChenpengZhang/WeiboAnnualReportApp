@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>上拉切换页面</title>
+<style>
+       body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    height: 100%;
+    font-family: Arial, sans-serif;
+}
+
+.page {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    transition: transform 0.5s ease-in-out;
+}
+
+.s-fcRed{
+    color: red; /* 设置文字颜色为红色 */
+    font-style: italic; /* 设置文字为斜体 */
+}
+
+.text-wrapper {
+    position: absolute;
+    top: 50%; /* 将文字包裹容器置于页面的垂直中间 */
+    transform: translateY(-50%);
+    width: 100%;
+    text-align: center; /* 文字居中 */
+}
+
+#page1 {
+    background-color: #f1c40f;
+    transform: translateY(0);
+}
+
+#page2 {
+    background-color: #e74c3c;
+    transform: translateY(100%);
+}
+
+#page3 {
+    background-color: #3498db;
+    transform: translateY(200%);
+}
+
+#page4 {
+	background-color: #3498db;
+	transform: translateY(300%);
+}
+
+#page5 {
+	background-color: #3498db;
+	transform: translateY(400%);
+}
+
+#page6 {
+	background-color: #3498db;
+	transform: translateY(500%);
+}
+
+    </style>
+</head>
+<body>
+    <div class="container" id="container">
+        <div class="page" id="page1">
+		<div class="text-wrapper">
+        		<h1 style="letter-spacing:.2em;font-size:29px;">我的旅行日记</h1>
+                	<p style="letter-spacing:.3em;font-size:14px;">二零一四年度微博使用报告</p>
+		</div>
+	</div>
+        <div class="page" id="page2">
+		<div class="text-wrapper">
+                 	<h1>这一年里</h1>
+                 	<p>你一共去了<em class="s-fcRed">13</em>个城市</p>                 	
+                 	<p>待得最久的是<em class="s-fcRed">南京</em></p>   
+                 	<p>&nbsp;</p>
+                 	<p>你旅行的风格成谜</p>
+                 	<p>喜欢在<em class="s-fcRed">晚上</em>发表微博</p>
+                 	<p>&nbsp;</p>                	
+                 	<p>你最喜欢说的词语是
+                 	<em class="s-fcRed">好热啊</em></p>             	
+            	</div>
+	</div>
+	<div class="page" id="page3">
+		<div class="text-wrapper">
+			<p><em class="s-fcRed">8月19日</em></p>
+			<p>这一天你睡得很晚</p>
+			<p><em class="s-fcRed">4：11</em>还在于微博相伴</p>
+			<p>&nbsp;</p>
+			<p>那一刻你发了个微博</p>
+			<p><em class="s-fcRed">你见过凌晨四点的苏州吗</em></p>
+		</div>
+	</div>
+	<div class="page" id="page4">
+		<div class="text-wrapper">		
+			<p>这是第四页</p>
+		</div>
+	</div>
+	<div class="page" id="page5">
+		<div class="text-wrapper">		
+			<p>这是第五页</p>
+		</div>
+	</div>
+	<div class="page" id="page6">
+		<div class="text-wrapper">		
+			<p>这是第六页</p>
+		</div>
+	</div>
+
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    let currentPage = 0;
+    const pages = document.querySelectorAll('.page');
+
+    const switchPage = (direction) => {
+        if (direction === 'up' && currentPage > 0) {
+            currentPage--;
+        } else if (direction === 'down' && currentPage < pages.length - 1) {
+            currentPage++;
+        }
+
+        pages.forEach((page, index) => {
+            page.style.transform = `translateY(${(index - currentPage) * 100}%)`;
+        });
+    };
+
+   function handleScroll(event) {
+        if (event.deltaY > 0) {
+            // Scrolling down
+           switchPage('down');
+        } else {
+            // Scrolling up
+           switchPage('up');
+        }
+        showPage(currentPage);
+    }
+window.addEventListener('wheel', handleScroll);
+
+});
+
+    </script>
+</body>
+</html>

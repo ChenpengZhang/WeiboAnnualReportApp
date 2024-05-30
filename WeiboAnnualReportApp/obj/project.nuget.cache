@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "KIkpg4YDSRcJL09H59h8OTAK3+8fR3lxwo76lAPO+BGFqSv+YXDFA4AEm9W6mLhoNoQ0lB9vj2a/vjCwt1VvuQ==",
+  "success": true,
+  "projectFilePath": "D:\\15.1\\数据库概论\\WeiboAnnualReportApp\\WeiboAnnualReportApp\\WeiboAnnualReportApp.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\zcp\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.29\\microsoft.windowsdesktop.app.ref.6.0.29.nupkg.sha512",
+    "C:\\Users\\zcp\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.29\\microsoft.netcore.app.ref.6.0.29.nupkg.sha512",
+    "C:\\Users\\zcp\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.29\\microsoft.aspnetcore.app.ref.6.0.29.nupkg.sha512",
+    "C:\\Users\\zcp\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.29\\microsoft.netcore.app.host.win-x64.6.0.29.nupkg.sha512"
+  ],
+  "logs": []
+}
