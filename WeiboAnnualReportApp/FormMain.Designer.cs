@@ -28,25 +28,39 @@
         /// </summary>
         private void InitializeComponent()
         {
-            btnCreateReport = new Button();
+            btnopenReport = new Button();
+            btoCreateReport = new Button();
             SuspendLayout();
             // 
-            // btnCreateReport
+            // btnopenReport
             // 
-            btnCreateReport.Location = new Point(233, 175);
-            btnCreateReport.Name = "btnCreateReport";
-            btnCreateReport.Size = new Size(144, 43);
-            btnCreateReport.TabIndex = 0;
-            btnCreateReport.Text = "生成年度报告";
-            btnCreateReport.UseVisualStyleBackColor = true;
-            btnCreateReport.Click += btnCreateReport_Click;
+            btnopenReport.Location = new Point(418, 359);
+            btnopenReport.Margin = new Padding(6, 5, 6, 5);
+            btnopenReport.Name = "btnopenReport";
+            btnopenReport.Size = new Size(281, 80);
+            btnopenReport.TabIndex = 0;
+            btnopenReport.Text = "打开年度报告";
+            btnopenReport.UseVisualStyleBackColor = true;
+            btnopenReport.Click += btnOpenReport_Click;
+            // 
+            // btoCreateReport
+            // 
+            btoCreateReport.Location = new Point(418, 171);
+            btoCreateReport.Name = "btoCreateReport";
+            btoCreateReport.Size = new Size(281, 82);
+            btoCreateReport.TabIndex = 1;
+            btoCreateReport.Text = "生成年度报告";
+            btoCreateReport.UseVisualStyleBackColor = true;
+            btoCreateReport.Click += btnCreateReport_Click;
             // 
             // FormMain
             // 
-            AutoScaleDimensions = new SizeF(7F, 17F);
+            AutoScaleDimensions = new SizeF(13F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(624, 386);
-            Controls.Add(btnCreateReport);
+            ClientSize = new Size(1159, 636);
+            Controls.Add(btoCreateReport);
+            Controls.Add(btnopenReport);
+            Margin = new Padding(6, 5, 6, 5);
             Name = "FormMain";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "欢迎来到微博年度报告";
@@ -55,6 +69,7 @@
 
         #endregion
 
-        private Button btnCreateReport;
+        private Button btnopenReport;
+        private Button btoCreateReport;
     }
 }
