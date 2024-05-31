@@ -1,13 +1,16 @@
 {
   "version": 2,
-  "dgSpecHash": "KIkpg4YDSRcJL09H59h8OTAK3+8fR3lxwo76lAPO+BGFqSv+YXDFA4AEm9W6mLhoNoQ0lB9vj2a/vjCwt1VvuQ==",
+  "dgSpecHash": "1fAzfs/SQqp49FB3XquUQhh69Cu1jaPzJE2waKI+jFcBGKQyoMXc2Ii9dfVQI3K7LtYawO6XQUlMVIHQRrqPyg==",
   "success": true,
-  "projectFilePath": "D:\\15.1\\数据库概论\\WeiboAnnualReportApp\\WeiboAnnualReportApp\\WeiboAnnualReportApp.csproj",
+  "projectFilePath": "D:\\datasource\\WeiboAnnualReportApp\\WeiboAnnualReportApp\\WeiboAnnualReportApp.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\zcp\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.29\\microsoft.windowsdesktop.app.ref.6.0.29.nupkg.sha512",
-    "C:\\Users\\zcp\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.29\\microsoft.netcore.app.ref.6.0.29.nupkg.sha512",
-    "C:\\Users\\zcp\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.29\\microsoft.aspnetcore.app.ref.6.0.29.nupkg.sha512",
-    "C:\\Users\\zcp\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.29\\microsoft.netcore.app.host.win-x64.6.0.29.nupkg.sha512"
+    "C:\\Users\\86151\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
+    "C:\\Users\\86151\\.nuget\\packages\\system.diagnostics.diagnosticsource\\8.0.1\\system.diagnostics.diagnosticsource.8.0.1.nupkg.sha512",
+    "C:\\Users\\86151\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\86151\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\6.0.28\\microsoft.windowsdesktop.app.ref.6.0.28.nupkg.sha512",
+    "C:\\Users\\86151\\.nuget\\packages\\microsoft.netcore.app.ref\\6.0.28\\microsoft.netcore.app.ref.6.0.28.nupkg.sha512",
+    "C:\\Users\\86151\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\6.0.28\\microsoft.aspnetcore.app.ref.6.0.28.nupkg.sha512",
+    "C:\\Users\\86151\\.nuget\\packages\\microsoft.netcore.app.host.win-x64\\6.0.28\\microsoft.netcore.app.host.win-x64.6.0.28.nupkg.sha512"
   ],
   "logs": []
 }
