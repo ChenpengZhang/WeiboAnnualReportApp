@@ -154,7 +154,7 @@ fetch('output.html')
     var point = new BMapGL.Point(109.792816,27.702774);
     bmapgl.centerAndZoom(point, 1);
 
- var flyLineView = new mapvgl.View({
+    var flyLineView = new mapvgl.View({
         map: bmapgl
     });
 
@@ -164,109 +164,99 @@ fetch('output.html')
 
     var layer = new mapvgl.PointLayer({
         color: 'rgba(102, 0, 204, 0.8)',
-        shape: 'circle',
+        shape: 'icon',
         blend: 'lighter',
         size: 15
     });
     pointView.addLayer(layer);
 
-var flyLineLayer = new mapvgl.FlyLineLayer({
+    var flyLineLayer = new mapvgl.FlyLineLayer({
         color: 'rgba(50, 50, 200, 1)',
         textureColor: 'rgba(50, 50, 200, 1)',
         textureWidth: 10,
         textureLength: 30
-	
     });
     flyLineView.addLayer(flyLineLayer);
 
 
-// 创建一个透明的图标
-var transparentIcon = new BMapGL.Icon("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wcAAwAB/aurZ1wAAAAASUVORK5CYII=", new BMapGL.Size(10, 10));
 
-// 创建一个新的标签并设置样式
     function createLabel(content) {
         var label = new BMapGL.Label(content, { offset: new BMapGL.Size(10, -25) });
         label.setStyle({
-            display: "none", // 默认不显示
+            display: "none",
             color: "black",
- 	    backgroundColor: "rgba(102, 0, 204, 0.3)", 
-            borderColor: "rgba(102, 0, 204, 0.6)", // 设置边框颜色为红色
-            borderStyle: "solid", // 设置边框样式为实线
-            borderWidth: "1px", // 设置边框宽度为1像素
-       	    borderRadius: "5px", // 设置边框圆角
+            backgroundColor: "rgba(255, 174, 238, 0.3)", 
+            borderColor: "rgba(102, 0, 204, 0.6)",
+            borderStyle: "solid",
+            borderWidth: "1px",
+            borderRadius: "5px",
             fontSize: "12px",
             height: "20px",
             lineHeight: "20px",
-         
             fontFamily: "微软雅黑"
         });
         return label;
     }
 
-    // 更新地图点并为每个点添加标签和事件
     function updateMapPoints(data) {
- var pointsData = data.map(function(item) {
-        return {
-            geometry: {
-                type: 'Point',
-                coordinates: [item.longitude, item.latitude]
-            },
-            properties: {
-                text: item.text
-            }
-        };
-    });
-  
+        var pointsData = data.map(function(item) {
+            return {
+                geometry: {
+                    type: 'Point',
+                    coordinates: [item.longitude, item.latitude]
+                },
+                properties: {
+                    text: item.text
+                }
+            };
+        });
 
-var flyLineData = [];
-var curve = new mapvgl.BezierCurve();
+        var flyLineData = [];
+        var curve = new mapvgl.BezierCurve();
         for (var i = 0; i < data.length; i++) {
             var item = data[i];
             var point = new BMapGL.Point(item.longitude, item.latitude);
 
-            // 创建自定义图标
-            var icon = new BMapGL.Icon('https://api.map.baidu.com/library/MarkerClusterer/1.2/examples/img/heart.png', new BMapGL.Size(20, 20));
-            icon.setImageSize(new BMapGL.Size(20, 20)); // 设置图标大小
+            // 使用Base64编码的SVG图标
+            var customIcon = 'data:image/svg+xml;base64,Cjxzdmcgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggZD0iTTEyIDBDOC4xMzQgMCA1IDMuMTM0IDUgN0M1IDExLjI1IDEyIDIxIDEyIDIxQzEyIDIxIDE5IDExLjI1IDE5IDdDMTkgMy4xMzQgMTUuODY2IDAgMTIgMFpNMTIgOS41QzEwLjYxOSA5LjUgOS41IDguMzgxIDkuNSA3QzkuNSA1LjYxOSAxMC42MTkgNC41IDEyIDQuNUMxMy4zODEgNC41IDE0LjUgNS42MTkgMTQuNSA3QzE0LjUgOC4zODEgMTMuMzgxIDkuNSAxMiA5LjVaIiBmaWxsPSJyZ2IoMTUxLDExMiwyNTUpIi8+Cjwvc3ZnPgo=';
+
+            var icon = new BMapGL.Icon(customIcon, new BMapGL.Size(15, 15));
+            icon.setImageSize(new BMapGL.Size(15, 15)); // 设置图标大小
 
             var marker = new BMapGL.Marker(point, { icon: icon });
-            var label = createLabel(item.text); // 使用点的属性信息创建标签
+            var label = createLabel(item.text);
             marker.setLabel(label);
 
             marker.addEventListener("mouseover", function() {
                 var label = this.getLabel();
-                label.setStyle({ display: "block" }); // 显示标签
+                label.setStyle({ display: "block" });
             });
             marker.addEventListener("mouseout", function() {
                 var label = this.getLabel();
-                label.setStyle({ display: "none" }); // 隐藏标签
+                label.setStyle({ display: "none" });
             });
 
-            bmapgl.addOverlay(marker); // 将标记添加到地图中
+            bmapgl.addOverlay(marker);
 
-            // 添加飞线数据
             if (i > 0) {
-		curve.setOptions({
+                curve.setOptions({
                     start: [data[i - 1].longitude, data[i - 1].latitude],
                     end: [item.longitude, item.latitude]
                 });
 
-		var curveModelData = curve.getPoints();
-
+                var curveModelData = curve.getPoints();
                 flyLineData.push({
                     geometry: {
                         type: 'LineString',
                         coordinates: curveModelData
                     }
-
                 });
             }
         }
 
-        // 更新飞线图层数据
         flyLineLayer.setData(flyLineData);
- // 更新点图层数据
-    layer.setData(pointsData);
-}
+  
+    }
 
   
     // 调用updateMapPoints函数并传递数据
