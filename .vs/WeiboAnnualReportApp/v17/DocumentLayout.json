@@ -1,14 +1,18 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\15.1\\\u6570\u636E\u5E93\u6982\u8BBA\\WeiboAnnualReportApp\\",
+  "WorkspaceRootPath": "D:\\datasource\\WeiboAnnualReportApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{E34760FB-117B-4726-84E5-6A0A0DA92F5A}|WeiboAnnualReportApp\\WeiboAnnualReportApp.csproj|d:\\15.1\\\u6570\u636E\u5E93\u6982\u8BBA\\weiboannualreportapp\\weiboannualreportapp\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{E34760FB-117B-4726-84E5-6A0A0DA92F5A}|WeiboAnnualReportApp\\WeiboAnnualReportApp.csproj|d:\\datasource\\weiboannualreportapp\\weiboannualreportapp\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{E34760FB-117B-4726-84E5-6A0A0DA92F5A}|WeiboAnnualReportApp\\WeiboAnnualReportApp.csproj|solutionrelative:weiboannualreportapp\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{E34760FB-117B-4726-84E5-6A0A0DA92F5A}|WeiboAnnualReportApp\\WeiboAnnualReportApp.csproj|d:\\15.1\\\u6570\u636E\u5E93\u6982\u8BBA\\weiboannualreportapp\\weiboannualreportapp\\weiboannualreportapp.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{E34760FB-117B-4726-84E5-6A0A0DA92F5A}|WeiboAnnualReportApp\\WeiboAnnualReportApp.csproj|solutionrelative:weiboannualreportapp\\weiboannualreportapp.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
+      "AbsoluteMoniker": "D:0:0:{E34760FB-117B-4726-84E5-6A0A0DA92F5A}|WeiboAnnualReportApp\\WeiboAnnualReportApp.csproj|D:\\datasource\\WeiboAnnualReportApp\\weiboannualreportapp\\formmain.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{E34760FB-117B-4726-84E5-6A0A0DA92F5A}|WeiboAnnualReportApp\\WeiboAnnualReportApp.csproj|solutionrelative:weiboannualreportapp\\formmain.designer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{E34760FB-117B-4726-84E5-6A0A0DA92F5A}|WeiboAnnualReportApp\\WeiboAnnualReportApp.csproj|D:\\datasource\\WeiboAnnualReportApp\\weiboannualreportapp\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "RelativeMoniker": "D:0:0:{E34760FB-117B-4726-84E5-6A0A0DA92F5A}|WeiboAnnualReportApp\\WeiboAnnualReportApp.csproj|solutionrelative:weiboannualreportapp\\formmain.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
   "DocumentGroupContainers": [
@@ -18,29 +22,58 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 6,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{74946827-37a0-11d2-a273-00c04f8ef4ff}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{b1e99781-ab81-11d0-b683-00aa00a3ee26}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "WeiboAnnualReportApp",
-              "DocumentMoniker": "D:\\15.1\\\u6570\u636E\u5E93\u6982\u8BBA\\WeiboAnnualReportApp\\WeiboAnnualReportApp\\WeiboAnnualReportApp.csproj",
-              "RelativeDocumentMoniker": "WeiboAnnualReportApp\\WeiboAnnualReportApp.csproj",
-              "ToolTip": "D:\\15.1\\\u6570\u636E\u5E93\u6982\u8BBA\\WeiboAnnualReportApp\\WeiboAnnualReportApp\\WeiboAnnualReportApp.csproj",
-              "RelativeToolTip": "WeiboAnnualReportApp\\WeiboAnnualReportApp.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-05-30T15:51:25.434Z",
+              "Title": "FormMain.Designer.cs",
+              "DocumentMoniker": "D:\\datasource\\WeiboAnnualReportApp\\WeiboAnnualReportApp\\FormMain.Designer.cs",
+              "RelativeDocumentMoniker": "WeiboAnnualReportApp\\FormMain.Designer.cs",
+              "ToolTip": "D:\\datasource\\WeiboAnnualReportApp\\WeiboAnnualReportApp\\FormMain.Designer.cs",
+              "RelativeToolTip": "WeiboAnnualReportApp\\FormMain.Designer.cs",
+              "ViewState": "AQIAAEAAAAAAAAAAAAAUwFsAAAAIAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-31T08:38:17.77Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "FormMain.cs [\u8BBE\u8BA1]",
+              "DocumentMoniker": "D:\\datasource\\WeiboAnnualReportApp\\WeiboAnnualReportApp\\FormMain.cs",
+              "RelativeDocumentMoniker": "WeiboAnnualReportApp\\FormMain.cs",
+              "ToolTip": "D:\\datasource\\WeiboAnnualReportApp\\WeiboAnnualReportApp\\FormMain.cs [\u8BBE\u8BA1]*",
+              "RelativeToolTip": "WeiboAnnualReportApp\\FormMain.cs [\u8BBE\u8BA1]*",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-31T08:36:02.085Z",
+              "EditorCaption": " [\u8BBE\u8BA1]"
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "FormMain.cs",
-              "DocumentMoniker": "D:\\15.1\\\u6570\u636E\u5E93\u6982\u8BBA\\WeiboAnnualReportApp\\WeiboAnnualReportApp\\FormMain.cs",
+              "DocumentMoniker": "D:\\datasource\\WeiboAnnualReportApp\\WeiboAnnualReportApp\\FormMain.cs",
               "RelativeDocumentMoniker": "WeiboAnnualReportApp\\FormMain.cs",
-              "ToolTip": "D:\\15.1\\\u6570\u636E\u5E93\u6982\u8BBA\\WeiboAnnualReportApp\\WeiboAnnualReportApp\\FormMain.cs",
-              "RelativeToolTip": "WeiboAnnualReportApp\\FormMain.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABAAAACCAAAA",
+              "ToolTip": "D:\\datasource\\WeiboAnnualReportApp\\WeiboAnnualReportApp\\FormMain.cs*",
+              "RelativeToolTip": "WeiboAnnualReportApp\\FormMain.cs*",
+              "ViewState": "AQIAAFUAAAAAAAAAAAAnwG8AAAA3AAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-05-30T15:17:16.053Z",
               "EditorCaption": ""

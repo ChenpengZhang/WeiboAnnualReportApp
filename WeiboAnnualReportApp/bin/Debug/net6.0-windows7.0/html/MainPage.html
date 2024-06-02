@@ -1,154 +1,277 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>上拉切换页面</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微博旅行日记</title>
 <style>
-       body, html {
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    height: 100%;
-    font-family: Arial, sans-serif;
+body, html {
+margin: 0;
+padding: 0;
+overflow: hidden;
+height: 100%;
+font-family: Arial, sans-serif;
 }
+ #map_container {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+ }
 
 .page {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    
-    transition: transform 0.5s ease-in-out;
+position: absolute;
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+transition: transform 0.5s ease-in-out;
 }
-
 .s-fcRed{
-    color: red; /* 设置文字颜色为红色 */
-    font-style: italic; /* 设置文字为斜体 */
+color: red; /* 设置文字颜色为红色 */
+font-style: italic; /* 设置文字为斜体 */
 }
-
 .text-wrapper {
-    position: absolute;
-    top: 50%; /* 将文字包裹容器置于页面的垂直中间 */
-    transform: translateY(-50%);
-    width: 100%;
-    text-align: center; /* 文字居中 */
+position: absolute;
+top: 50%; /* 将文字包裹容器置于页面的垂直中间 */
+transform: translateY(-50%);
+width: 100%;
+text-align: center; /* 文字居中 */
 }
-
 #page1 {
-    background-color: #f1c40f;
-    transform: translateY(0);
+background-color: #f1c40f;
+transform: translateY(0);
 }
-
 #page2 {
-    background-color: #e74c3c;
-    transform: translateY(100%);
+background-color: #e74c3c;
+transform: translateY(100%);
 }
-
 #page3 {
-    background-color: #3498db;
-    transform: translateY(200%);
+background-color: #3498db;
+transform: translateY(200%);
 }
-
 #page4 {
-	background-color: #3498db;
-	transform: translateY(300%);
+background-color: #3498db;
+transform: translateY(300%);
 }
-
 #page5 {
-	background-color: #3498db;
-	transform: translateY(400%);
+background-color: #3498db;
+transform: translateY(400%);
 }
-
 #page6 {
-	background-color: #3498db;
-	transform: translateY(500%);
+background-color: #3498db;
+transform: translateY(500%);
 }
-
-    </style>
+</style>
 </head>
 <body>
-    <div class="container" id="container">
-        <div class="page" id="page1">
-		<div class="text-wrapper">
-        		<h1 style="letter-spacing:.2em;font-size:29px;">我的旅行日记</h1>
-                	<p style="letter-spacing:.3em;font-size:14px;">二零一四年度微博使用报告</p>
-		</div>
-	</div>
-        <div class="page" id="page2">
-		<div class="text-wrapper">
-                 	<h1>这一年里</h1>
-                 	<p>你一共去了<em class="s-fcRed">13</em>个城市</p>                 	
-                 	<p>待得最久的是<em class="s-fcRed">南京</em></p>   
-                 	<p>&nbsp;</p>
-                 	<p>你旅行的风格成谜</p>
-                 	<p>喜欢在<em class="s-fcRed">晚上</em>发表微博</p>
-                 	<p>&nbsp;</p>                	
-                 	<p>你最喜欢说的词语是
-                 	<em class="s-fcRed">好热啊</em></p>             	
-            	</div>
-	</div>
-	<div class="page" id="page3">
-		<div class="text-wrapper">
-			<p><em class="s-fcRed">8月19日</em></p>
-			<p>这一天你睡得很晚</p>
-			<p><em class="s-fcRed">4：11</em>还在于微博相伴</p>
-			<p>&nbsp;</p>
-			<p>那一刻你发了个微博</p>
-			<p><em class="s-fcRed">你见过凌晨四点的苏州吗</em></p>
-		</div>
-	</div>
-	<div class="page" id="page4">
-		<div class="text-wrapper">		
-			<p>这是第四页</p>
-		</div>
-	</div>
-	<div class="page" id="page5">
-		<div class="text-wrapper">		
-			<p>这是第五页</p>
-		</div>
-	</div>
-	<div class="page" id="page6">
-		<div class="text-wrapper">		
-			<p>这是第六页</p>
-		</div>
-	</div>
+<div class="container" id="container">
+<div class="page" id="page1">
+<div class="text-wrapper">
+<h1 style="letter-spacing:.2em;font-size:29px;">我的旅行日记</h1>
+<p style="letter-spacing:.3em;font-size:14px;">二零一四年度微博使用报告</p>
+</div>
+</div>
+<div class="page" id="page2">
+<div class="text-wrapper">
+<h1>这一年里</h1>
+<p>你一共去了<em class="s-fcRed">  </em>个城市</p>
+<p>待得最久的是<em class="s-fcRed">  </em></p>
+<p>&nbsp;</p>
+<p>你旅行的风格成谜</p>
+<p>喜欢在<em class="s-fcRed">  </em>发表微博</p>
+<p>&nbsp;</p>
+<p>你最喜欢说的词语是<em class="s-fcRed">  </em></p>
+</div>
+</div>
+<div class="page" id="page3">
+<div class="text-wrapper">
+<p><em class="s-fcRed">  </em></p>
+<p>这一天你睡得很晚</p>
+<p><em class="s-fcRed">  </em>还在于微博相伴</p>
+<p>&nbsp;</p>
+<p>那一刻你发了个微博</p>
+<p><em class="s-fcRed">  </em></p>
+</div>
+</div>
+<div class="page" id="page4">
 
-    </div>
+<div id="map_container"></div>
 
-    <script>
+</div>
+<div class="page" id="page5">
+<div class="text-wrapper">
+<p>这是第五页</p>
+</div>
+</div>
+<div class="page" id="page6">
+<div class="text-wrapper">
+<p>这是第六页</p>
+</div>
+</div>
+</div>
+<script>
 document.addEventListener('DOMContentLoaded', () => {
-    let currentPage = 0;
-    const pages = document.querySelectorAll('.page');
-
-    const switchPage = (direction) => {
-        if (direction === 'up' && currentPage > 0) {
-            currentPage--;
-        } else if (direction === 'down' && currentPage < pages.length - 1) {
-            currentPage++;
-        }
-
-        pages.forEach((page, index) => {
-            page.style.transform = `translateY(${(index - currentPage) * 100}%)`;
-        });
-    };
-
-   function handleScroll(event) {
-        if (event.deltaY > 0) {
-            // Scrolling down
-           switchPage('down');
-        } else {
-            // Scrolling up
-           switchPage('up');
-        }
-        showPage(currentPage);
-    }
+let currentPage = 0;
+const pages = document.querySelectorAll('.page');
+const switchPage = (direction) => {
+if (direction === 'up' && currentPage > 0) {
+currentPage--;
+} else if (direction === 'down' && currentPage < pages.length - 1) {
+currentPage++;
+}
+pages.forEach((page, index) => {
+page.style.transform = `translateY(${(index - currentPage) * 100}%)`;
+});
+};
+function handleScroll(event) {
+if (event.deltaY > 0) {
+switchPage('down');
+} else {
+switchPage('up');
+}
+showPage(currentPage);
+}
 window.addEventListener('wheel', handleScroll);
-
 });
 
-    </script>
+fetch('output.html')
+        .then(response => response.text())
+        .then(data => {
+            document.querySelector('#page4-content').innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error loading new content:', error);
+        });
+
+</script>
+<script src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=fpMKa6sGENtDsvgT3iA3MErslqRNK5Di"></script>
+<script src="https://unpkg.com/mapvgl/dist/mapvgl.min.js"></script>
+<script src="https://unpkg.com/mapvgl/dist/mapvgl.threelayers.min.js"></script>
+<script>
+    var bmapgl = new BMapGL.Map('map_container');
+    var point = new BMapGL.Point(109.792816,27.702774);
+    bmapgl.centerAndZoom(point, 1);
+
+ var flyLineView = new mapvgl.View({
+        map: bmapgl
+    });
+
+    var pointView = new mapvgl.View({
+        map: bmapgl
+    });
+
+    var layer = new mapvgl.PointLayer({
+        color: 'rgba(102, 0, 204, 0.8)',
+        shape: 'circle',
+        blend: 'lighter',
+        size: 15
+    });
+    pointView.addLayer(layer);
+
+var flyLineLayer = new mapvgl.FlyLineLayer({
+        color: 'rgba(50, 50, 200, 1)',
+        textureColor: 'rgba(50, 50, 200, 1)',
+        textureWidth: 10,
+        textureLength: 30
+	
+    });
+    flyLineView.addLayer(flyLineLayer);
+
+
+// 创建一个透明的图标
+var transparentIcon = new BMapGL.Icon("data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAQAAAC1HAwCAAAAC0lEQVR42mP8/wcAAwAB/aurZ1wAAAAASUVORK5CYII=", new BMapGL.Size(10, 10));
+
+// 创建一个新的标签并设置样式
+    function createLabel(content) {
+        var label = new BMapGL.Label(content, { offset: new BMapGL.Size(10, -25) });
+        label.setStyle({
+            display: "none", // 默认不显示
+            color: "black",
+ 	    backgroundColor: "rgba(102, 0, 204, 0.3)", 
+            borderColor: "rgba(102, 0, 204, 0.6)", // 设置边框颜色为红色
+            borderStyle: "solid", // 设置边框样式为实线
+            borderWidth: "1px", // 设置边框宽度为1像素
+       	    borderRadius: "5px", // 设置边框圆角
+            fontSize: "12px",
+            height: "20px",
+            lineHeight: "20px",
+         
+            fontFamily: "微软雅黑"
+        });
+        return label;
+    }
+
+    // 更新地图点并为每个点添加标签和事件
+    function updateMapPoints(data) {
+ var pointsData = data.map(function(item) {
+        return {
+            geometry: {
+                type: 'Point',
+                coordinates: [item.longitude, item.latitude]
+            },
+            properties: {
+                text: item.text
+            }
+        };
+    });
+  
+
+var flyLineData = [];
+var curve = new mapvgl.BezierCurve();
+        for (var i = 0; i < data.length; i++) {
+            var item = data[i];
+            var point = new BMapGL.Point(item.longitude, item.latitude);
+
+            // 创建自定义图标
+            var icon = new BMapGL.Icon('https://api.map.baidu.com/library/MarkerClusterer/1.2/examples/img/heart.png', new BMapGL.Size(20, 20));
+            icon.setImageSize(new BMapGL.Size(20, 20)); // 设置图标大小
+
+            var marker = new BMapGL.Marker(point, { icon: icon });
+            var label = createLabel(item.text); // 使用点的属性信息创建标签
+            marker.setLabel(label);
+
+            marker.addEventListener("mouseover", function() {
+                var label = this.getLabel();
+                label.setStyle({ display: "block" }); // 显示标签
+            });
+            marker.addEventListener("mouseout", function() {
+                var label = this.getLabel();
+                label.setStyle({ display: "none" }); // 隐藏标签
+            });
+
+            bmapgl.addOverlay(marker); // 将标记添加到地图中
+
+            // 添加飞线数据
+            if (i > 0) {
+		curve.setOptions({
+                    start: [data[i - 1].longitude, data[i - 1].latitude],
+                    end: [item.longitude, item.latitude]
+                });
+
+		var curveModelData = curve.getPoints();
+
+                flyLineData.push({
+                    geometry: {
+                        type: 'LineString',
+                        coordinates: curveModelData
+                    }
+
+                });
+            }
+        }
+
+        // 更新飞线图层数据
+        flyLineLayer.setData(flyLineData);
+ // 更新点图层数据
+    layer.setData(pointsData);
+}
+
+  
+    // 调用updateMapPoints函数并传递数据
+    var data = [{"latitude":39.959511,"longitude":116.440598,"text":"坚持锻炼可以提高心脏功能，早晨起来和白天不活动的时候跳这么几下就够了 我在这里:http://t.cn/z8LAok6"},{"latitude":39.934715,"longitude":116.454521,"text":"一个演员，两个观众 我在这里:http://t.cn/zTIDpnL"},{"latitude":39.92345,"longitude":116.353973,"text":"负重7公斤，暴走10公里 我在这里:http://t.cn/z8A4YRM"},{"latitude":39.934715,"longitude":116.454521,"text":"我也知道那儿暖和 我在这里:http://t.cn/zTIDpnL"},{"latitude":39.934715,"longitude":116.454521,"text":"迪卡侬的东西真是物美价廉。健身房里各种设备都是强制接收心率胸带的信号，有意思。 我在这里:http://t.cn/zTIDpnL"},{"latitude":39.936203,"longitude":116.454018,"text":"， 我在这里:http://t.cn/z8LCmEe"},{"latitude":40.358837,"longitude":116.625298,"text":"， 我在这里:http://t.cn/z8Uz2Cu"},{"latitude":31.197678,"longitude":121.328484,"text":"看见那英了 我在这里:http://t.cn/z8AUoXk"},{"latitude":31.788469,"longitude":121.00193,"text":"三年来手机高空坠落几十次之后今天没能幸免，后背烂了，一直往下掉玻璃渣 我在这里:http://t.cn/z8AiIGe"},{"latitude":31.19268,"longitude":121.321518,"text":"长途高铁不算痛苦 我在这里:http://t.cn/z8A4P7P"},{"latitude":32.15749,"longitude":119.420868,"text":"路过 我在这里:http://t.cn/z8AbFdZ"},{"latitude":39.936203,"longitude":116.454018,"text":"， 我在这里:http://t.cn/z8LCmEe"},{"latitude":39.934715,"longitude":116.454521,"text":"morning 我在这里:http://t.cn/zTIDpnL"},{"latitude":39.959511,"longitude":116.440598,"text":"假期生活 我在这里:http://t.cn/z8LAok6"},{"latitude":39.968025,"longitude":116.489937,"text":"the end 我在这里:http://t.cn/z8AUYIz"},{"latitude":39.934162,"longitude":116.449806,"text":"分享图片 我在这里:http://t.cn/z8arpkz"},{"latitude":39.957687,"longitude":116.435722,"text":"再创个人1000米最好成绩，虽然只比前天提高3秒 我在这里:http://t.cn/z8iZWtK"},{"latitude":39.957687,"longitude":116.435722,"text":"再创个人最好成绩，2000米47分，平均每千米23分30秒 我在这里:http://t.cn/z8iZWtK"},{"latitude":39.973709,"longitude":116.402039,"text":"三尖瓣微量返流，下午就可以确诊了 @刘轩33 @超级鸡蛋  我在这里:http://t.cn/z8AGkos"},{"latitude":39.983631,"longitude":116.327591,"text":"本年度室外游泳训练结束，个人最好成绩已经无法超越。 我在这里:http://t.cn/z8G17c0"},{"latitude":39.934536,"longitude":116.454483,"text":"分享图片 我在这里:http://t.cn/zHDvCM0"},{"latitude":39.931168,"longitude":116.462219,"text":"分享图片 我在这里:http://t.cn/z8hiUD6"},{"latitude":39.931278,"longitude":116.456497,"text":"分享图片 我在这里:http://t.cn/zHsaTKw"},{"latitude":39.9622,"longitude":116.457001,"text":"， 我在这里:http://t.cn/zHDz5Nl"},{"latitude":33.367271,"longitude":120.18734,"text":"第一次交通事故给了家乡父老，对方实线并线，车身没有完全进线的时候蹭上了，还企图要我赔偿，我下车各种拍照后自信的拨打了110，对方全责，还好没误了火车。 我在这里:http://t.cn/zHshA5H"},{"latitude":33.19878,"longitude":120.47052,"text":"我市人民游泳水平巨次 我在这里:http://t.cn/zQ3ghCk"},{"latitude":39.983631,"longitude":116.327591,"text":"个人最好成绩，1000米蛙24分8秒 我在这里:http://t.cn/zQxbmm1"},{"latitude":39.933296,"longitude":116.440704,"text":"， 我在这里:http://t.cn/zQUW54f"},{"latitude":39.934601,"longitude":116.455002,"text":"分享图片 我在这里:http://t.cn/zHDbbgs"},{"latitude":39.934536,"longitude":116.454483,"text":"接力 我在这里:http://t.cn/zHDvCM0"},{"latitude":39.934162,"longitude":116.449806,"text":"分享图片 我在这里:http://t.cn/zHFa3Y3"},{"latitude":39.934715,"longitude":116.454521,"text":"各种练 我在这里:http://t.cn/zHec0oh"},{"latitude":39.934536,"longitude":116.454483,"text":"， 我在这里:http://t.cn/zHDvCM0"},{"latitude":39.983631,"longitude":116.327591,"text":"最喜欢露天游泳了 我在这里:http://t.cn/zQxbmm1"},{"latitude":39.934536,"longitude":116.454483,"text":"再接力一场 我在这里:http://t.cn/zHDvCM0"},{"latitude":39.936272,"longitude":116.454208,"text":"， 我在这里:http://t.cn/zHDc9dK"},{"latitude":39.934536,"longitude":116.454483,"text":"， 我在这里:http://t.cn/zHDvCM0"},{"latitude":39.93895,"longitude":116.444328,"text":"， 我在这里:http://t.cn/zHkF6si"},{"latitude":39.950321,"longitude":116.436073,"text":"， 我在这里:http://t.cn/zHDRNdN"},{"latitude":39.934715,"longitude":116.454521,"text":"终于如愿以偿被雨浇了[酷] 我在这里:http://t.cn/zHec0oh"},{"latitude":39.93895,"longitude":116.444328,"text":"， 我在这里:http://t.cn/zHkF6si"},{"latitude":39.93895,"longitude":116.444328,"text":"， 我在这里:http://t.cn/zHkF6si"},{"latitude":39.935253,"longitude":116.449921,"text":"， 我在这里:http://t.cn/zHeIJA1"},{"latitude":39.934738,"longitude":116.455116,"text":"， 我在这里:http://t.cn/zHeFo9H"},{"latitude":39.934715,"longitude":116.454521,"text":"终于回到我大北京了 我在这里:http://t.cn/zlTBHDq"},{"latitude":11.946913,"longitude":121.928528,"text":"已登陆 我在这里:http://t.cn/zTvbzU8"},{"latitude":14.536047,"longitude":120.98848,"text":"出租车上的广播里放的是菲律宾版的和往事干杯 我在:http://t.cn/zH8PAyF"},{"latitude":14.535098,"longitude":120.982162,"text":"优衣酷的眯镜也是我天朝生产的 我在这里:http://t.cn/zl1Anqk"},{"latitude":14.611183,"longitude":120.988274,"text":"分享图片 我在这里:http://t.cn/zj9JGyw"},{"latitude":14.5917,"longitude":120.97197,"text":"3G可以走起了 我在:http://t.cn/zHYWCim"},{"latitude":14.570038,"longitude":121.046478,"text":"签到确认安全 我在这里:http://t.cn/zHj3GSp"},{"latitude":39.94326,"longitude":116.395218,"text":"， 我在这里:http://t.cn/zjcTMMl"},{"latitude":39.979164,"longitude":116.484589,"text":"股东前来视察 我在这里:http://t.cn/zY83Sa2"},{"latitude":39.930599,"longitude":116.447578,"text":"， 我在这里:http://t.cn/zjJNOOD"},{"latitude":39.950321,"longitude":116.436073,"text":"分享图片 我在这里:http://t.cn/zj5AUj6"},{"latitude":39.93895,"longitude":116.444328,"text":"， 我在这里:http://t.cn/zj54bkq"},{"latitude":39.934536,"longitude":116.454483,"text":"分享图片 我在这里:http://t.cn/zl45Bwl"},{"latitude":39.96011,"longitude":116.440224,"text":"绝望 我在这里:http://t.cn/zjzk08W"},{"latitude":39.985809,"longitude":116.402603,"text":"英东被各种培训班占领了，像哥这种自学成才的还是少数 我在这里:http://t.cn/zj5tBuN"},{"latitude":39.935196,"longitude":116.450111,"text":"音乐太搞笑了，感觉能从喇叭里钻出一堆阿三 我在这里:http://t.cn/zjaFnOv"},{"latitude":40.000141,"longitude":116.390228,"text":"科技界人士 我在这里:http://t.cn/zl8OIuN"},{"latitude":39.923908,"longitude":116.438332,"text":"， 我在这里:http://t.cn/zljGqEO"},{"latitude":39.934715,"longitude":116.454521,"text":"今天成功穿越工体游泳馆1.8米深处8次，作为残疾人士学游泳都有生命危险。 我在这里:http://t.cn/zlTBHDq"},{"latitude":39.934601,"longitude":116.455002,"text":"分享图片 我在这里:http://t.cn/zlRBRgi"},{"latitude":39.928539,"longitude":116.45797,"text":"分享图片 我在这里:http://t.cn/zjVvXA9"},{"latitude":39.934715,"longitude":116.454521,"text":"分享图片 我在这里:http://t.cn/zlTBHDq"},{"latitude":39.934536,"longitude":116.454483,"text":"接盘侠的故事 我在这里:http://t.cn/zl45Bwl"},{"latitude":39.923935,"longitude":116.438225,"text":"， 我在这里:http://t.cn/zYZebmB"},{"latitude":39.934536,"longitude":116.454483,"text":"分享图片 我在这里:http://t.cn/zl45Bwl"},{"latitude":39.934715,"longitude":116.454521,"text":"王博士说，我已经摆脱了色盲基因，甚感欣慰。 我在这里:http://t.cn/zlTBHDq"},{"latitude":39.920841,"longitude":116.444,"text":"， 我在这里:http://t.cn/zj9yz66"},{"latitude":39.928539,"longitude":116.45797,"text":"撸串儿 我在这里:http://t.cn/zjVvXA9"},{"latitude":39.934601,"longitude":116.455002,"text":"， 我在这里:http://t.cn/zlRBRgi"},{"latitude":39.936203,"longitude":116.454018,"text":"， 我在这里:http://t.cn/zl1tLZ5"},{"latitude":39.96011,"longitude":116.440224,"text":"才来帝都两天，嗓子又不行了 我在这里:http://t.cn/zjzk08W"},{"latitude":39.934715,"longitude":116.454521,"text":"旅途劳顿 我在这里:http://t.cn/zlTBHDq"},{"latitude":31.19224,"longitude":121.331444,"text":"延误了 我在这里:http://t.cn/zl8eCMY"},{"latitude":31.788469,"longitude":121.00193,"text":"高速过桥需要5分多种 我在这里:http://t.cn/zj5cBfs"},{"latitude":32.966724,"longitude":120.702415,"text":"这个是无限期租赁给上海的地方 我在这里:http://t.cn/zjK3H3J"},{"latitude":40.05587,"longitude":116.615349,"text":"， 我在这里:http://t.cn/zlK9v5K"},{"latitude":39.931709,"longitude":116.449776,"text":"散伙 我在这里:http://t.cn/zl1IGNE"},{"latitude":39.965321,"longitude":116.436317,"text":"， 我在这里:http://t.cn/zjxyX9m"},{"latitude":39.939835,"longitude":116.463829,"text":"， 我在这里:http://t.cn/zjcgBOg"},{"latitude":39.922092,"longitude":116.440163,"text":"被发证了 我在这里:http://t.cn/zjALq0H"},{"latitude":39.982269,"longitude":116.407524,"text":" @navigator182 我在:http://t.cn/zYAMLu6"},{"latitude":39.934601,"longitude":116.455002,"text":"， 我在这里:http://t.cn/zlRBRgi"},{"latitude":39.935989,"longitude":116.45433,"text":"吃个晚饭都要被拉皮条，L！ 我在这里:http://t.cn/zjoLsuJ"},{"latitude":39.934536,"longitude":116.454483,"text":"， 我在这里:http://t.cn/zl45Bwl"},{"latitude":39.921841,"longitude":116.450722,"text":"， 我在这里:http://t.cn/zj5rJdK"},{"latitude":45.759319,"longitude":126.647018,"text":"， 我在这里:http://t.cn/zj9qAYj"},{"latitude":45.776138,"longitude":126.618271,"text":"， 我在这里:http://t.cn/zjtFW1f"},{"latitude":45.77005,"longitude":126.62738,"text":"分享图片 我在这里:http://t.cn/zlgclWv"},{"latitude":45.684681,"longitude":126.569794,"text":"就要走起 我在:http://t.cn/zjBEv0Z"},{"latitude":39.903721,"longitude":116.427269,"text":"即将北上，装备略显不足 我在这里:http://t.cn/zll7kPf"},{"latitude":39.930599,"longitude":116.447578,"text":"， 我在这里:http://t.cn/zjJNOOD"},{"latitude":39.936203,"longitude":116.454018,"text":"， 我在这里:http://t.cn/zl1tLZ5"},{"latitude":39.93676,"longitude":116.457161,"text":"， 我在这里:http://t.cn/zljt2Q1"},{"latitude":39.933968,"longitude":116.451569,"text":"， 我在这里:http://t.cn/zj9GtL0"},{"latitude":39.978352,"longitude":116.483948,"text":"前股东视察 我在这里:http://t.cn/zjWr2XO"},{"latitude":39.933998,"longitude":116.444,"text":"， 我在这里:http://t.cn/zjfStXz"},{"latitude":39.940731,"longitude":116.450394,"text":"假期无事，唯有上班 我在:http://t.cn/zjHNtYV"},{"latitude":39.936119,"longitude":116.454323,"text":"， 我在这里:http://t.cn/zjtZdwZ"},{"latitude":39.936394,"longitude":116.448219,"text":"， 我在这里:http://t.cn/zj94EWW"},{"latitude":39.095791,"longitude":117.186203,"text":"yeah 我在这里:http://t.cn/zj5GXk3"},{"latitude":39.865028,"longitude":116.378998,"text":"津门一串走 我在这里:http://t.cn/zlMJbFU"},{"latitude":39.936203,"longitude":116.454018,"text":"分享图片 我在这里:http://t.cn/zl1tLZ5"},{"latitude":39.933998,"longitude":116.444,"text":"， 我在这里:http://t.cn/zjfStXz"},{"latitude":39.935253,"longitude":116.449921,"text":"， 我在这里:http://t.cn/zljmJTr"},{"latitude":39.934601,"longitude":116.455002,"text":"， 我在这里：http://t.cn/zlRBRgi"},{"latitude":39.930599,"longitude":116.447578,"text":"， 我在这里：http://t.cn/zjJNOOD"},{"latitude":39.955872,"longitude":116.4328,"text":"相伴终身这个事情很多时候只是一厢情愿 我在这里：http://t.cn/zjqDD0E"},{"latitude":39.959511,"longitude":116.440598,"text":"分享图片 我在这里：http://t.cn/zlDRfvs"},{"latitude":39.960278,"longitude":116.436516,"text":"车站旁有只狗冻的直发抖，可惜无力收留，但愿它能活过这个冬天。当年我家丢了的狗不知道是不是也经历过这样的凄凉。一阵心酸，养狗毁终身。 我在这里：http://t.cn/zlqW4Iy"},{"latitude":39.907799,"longitude":116.401321,"text":"撸过 我在这里：http://t.cn/zl1dNeF"},{"latitude":39.935253,"longitude":116.449921,"text":"， 我在这里：http://t.cn/zljmJTr"},{"latitude":39.931709,"longitude":116.449776,"text":"好久不来 我在这里：http://t.cn/zl1IGNE"},{"latitude":39.935253,"longitude":116.449921,"text":"， 我在#南京大牌档(世茂百货店)# http://t.cn/zljmJTr"},{"latitude":39.948181,"longitude":116.374779,"text":"， 我在#慈铭健康体检(积水潭分部)# http://t.cn/zOeB5of"},{"latitude":39.934258,"longitude":116.454315,"text":"， 我在#美嘉欢乐影城MEGABOX（三里屯店）# http://t.cn/zOgYRxP"},{"latitude":39.931789,"longitude":116.450737,"text":"， 我在#丸金拉面# http://t.cn/zWUydgy"},{"latitude":39.91082,"longitude":116.37326,"text":"， 我在#西单大悦城# http://t.cn/zOgxFF8"},{"latitude":39.935253,"longitude":116.449921,"text":"， 我在#南京大牌档(世茂百货店)# http://t.cn/zOgpgzM"},{"latitude":39.936203,"longitude":116.454018,"text":"， 我在#三里屯面馆# http://t.cn/zOgkQkL"},{"latitude":39.950314,"longitude":116.436066,"text":"， 我在#当代MOMA百老汇电影中心# http://t.cn/zOeASOW"},{"latitude":39.958569,"longitude":116.440353,"text":"， 我在#金多宝茶餐厅(左家庄店)# http://t.cn/zOeawME"},{"latitude":39.932529,"longitude":116.694649,"text":"领了驾照，终于彻底告别无良驾校。驾校里算命的老先生不在，本来还想聊10块钱的。 我在#京东驾校# http://t.cn/zOg1Woj"},{"latitude":39.935253,"longitude":116.449921,"text":"， 我在#南京大牌档(世茂百货店)# http://t.cn/zOgpgzM"},{"latitude":39.960091,"longitude":116.441353,"text":"， 我在#管记翅吧 国展店# http://t.cn/zOgNeXr"},{"latitude":40.05587,"longitude":116.615349,"text":"yeah 我在#首都机场T3航站楼# http://t.cn/zOgMgNc"},{"latitude":31.197678,"longitude":121.328484,"text":"回 我在#虹桥机场2号航站楼# http://t.cn/zOgMTjm"},{"latitude":29.992451,"longitude":120.582809,"text":"分享图片 我在#咸亨酒店# http://t.cn/zOgKeNm"},{"latitude":29.991671,"longitude":120.586166,"text":"国内人文景观大多没有原味，甚至没有人文气息 我在#三味书屋# http://t.cn/zOe6RkA"},{"latitude":30.00173,"longitude":120.584412,"text":"， 我在#桐乡煲绍兴店# http://t.cn/zOsGedy"},{"latitude":29.990953,"longitude":120.587311,"text":"， 我在#绍兴梦江南假日酒店# http://t.cn/zW0CLOp"},{"latitude":29.987579,"longitude":120.579659,"text":"， 我在#伽蓝殿青年旅舍# http://t.cn/zOrAS5R"},{"latitude":30.014753,"longitude":120.579643,"text":"， 我在#绍兴火车站# http://t.cn/zOg66NK"},{"latitude":31.197149,"longitude":121.320869,"text":"， 我在#虹桥火车站候车大厅# http://t.cn/zOgo5OU"},{"latitude":31.169436,"longitude":121.413666,"text":"， 我在#窑洞小厨 苍梧路店# http://t.cn/zOeZyci"},{"latitude":31.209595,"longitude":121.408798,"text":"魔都下雨 我在#上海虹桥机场# http://t.cn/zll35vA"},{"latitude":40.064236,"longitude":116.601555,"text":"周末 我在#北京首都国际机场# http://t.cn/zOgxiLr"},{"latitude":39.934803,"longitude":116.454208,"text":"， 我在#上海经典小笼汤包# http://t.cn/zOeLyzt"},{"latitude":39.95356,"longitude":116.443176,"text":"， 我在#大鸭梨烤鸭店 左家庄店# http://t.cn/zOeXXGz"},{"latitude":39.935989,"longitude":116.45433,"text":"， 我在#一品小笼(三里屯店)# http://t.cn/zOkvaNV"},{"latitude":39.958233,"longitude":116.44442,"text":"， 我在#老边饺子馆(三元桥店)# http://t.cn/zOFjapF"},{"latitude":39.936203,"longitude":116.454018,"text":"， 我在#三里屯面馆# http://t.cn/zOgkQkL"},{"latitude":39.936203,"longitude":116.454018,"text":"分享图片 我在#三里屯面馆# http://t.cn/zOgkQkL"},{"latitude":39.983402,"longitude":116.411003,"text":"再送红指导 我在#京味斋(奥体店)# http://t.cn/zOeArRI"},{"latitude":39.97084,"longitude":116.418358,"text":"， 我在#金蜀轩 樱花西街店# http://t.cn/zOgDLm7"},{"latitude":39.934601,"longitude":116.455002,"text":"， 我在#无敌家(三里屯店)# http://t.cn/zW3Q2jJ"},{"latitude":39.963181,"longitude":116.436096,"text":"， 我在#黑松白鹿(西坝河店)# http://t.cn/zOgXw3r"},{"latitude":39.936203,"longitude":116.454018,"text":"， 我在#三里屯面馆# http://t.cn/zOgkQkL"},{"latitude":39.934258,"longitude":116.454315,"text":"， 我在#美嘉欢乐影城MEGABOX（三里屯店）# http://t.cn/zOgYRxP"},{"latitude":39.940701,"longitude":116.424004,"text":"， 我在#新派川菜# http://t.cn/zlmZCPd"},{"latitude":39.963181,"longitude":116.436096,"text":"， 我在#黑松白鹿(西坝河店)# http://t.cn/zOgXw3r"},{"latitude":39.963181,"longitude":116.436096,"text":"， 我在#黑松白鹿(西坝河店)# http://t.cn/zOgXw3r"},{"latitude":39.963181,"longitude":116.436096,"text":"， 我在#黑松白鹿(西坝河店)# http://t.cn/zOgXw3r"},{"latitude":39.940971,"longitude":116.159821,"text":"， 我在#法海寺# http://t.cn/zOFqtpy"},{"latitude":39.93494,"longitude":116.454727,"text":"， 我在#澳门味道( 三里屯Village店)# http://t.cn/zOgo8Nm"},{"latitude":39.963181,"longitude":116.436096,"text":"， 我在#黑松白鹿(西坝河店)# http://t.cn/zOgXw3r"},{"latitude":39.935253,"longitude":116.449921,"text":"， 我在#南京大牌档(世茂百货店)# http://t.cn/zOgpgzM"},{"latitude":39.934715,"longitude":116.454521,"text":"帝都帝都 我在#三里屯# http://t.cn/zOg9XZz"},{"latitude":33.423012,"longitude":120.211311,"text":"每天只有4个航班的机场，总是没人不用慌，起飞之前还能沿途参观一排战斗机 我在#盐城南洋机场# http://t.cn/zOew5fJ"},{"latitude":33.280918,"longitude":120.807487,"text":"定位留念，这次真的到海里了 我在#大丰港# http://t.cn/zOeKivk"},{"latitude":33.423012,"longitude":120.211311,"text":"还很热 我在#盐城南洋机场# http://t.cn/zOew5fJ"},{"latitude":40.05587,"longitude":116.615349,"text":"我又想说，哪里都不是家，生活永远在别处 我在#首都机场T3航站楼# http://t.cn/zOgMgNc"},{"latitude":39.950314,"longitude":116.436066,"text":"路考没过，来疗伤。找环形使者把30年前的自己崩了就没这些烦心事了 我在#当代MOMA百老汇电影中心# http://t.cn/zOeASOW"},{"latitude":39.963181,"longitude":116.436096,"text":", 我在#黑松白鹿(西坝河店)# http://t.cn/zOgXw3r"},{"latitude":39.963181,"longitude":116.436096,"text":"， 我在#黑松白鹿(西坝河店)# http://t.cn/zOgXw3r"},{"latitude":39.963181,"longitude":116.436096,"text":"， 我在#黑松白鹿(西坝河店)# http://t.cn/zOgXw3r"},{"latitude":39.936394,"longitude":116.448219,"text":"， 我在#陕面居(幸福一村店)# http://t.cn/zW0akRX"},{"latitude":39.933922,"longitude":116.45517,"text":"。 我在#麦当劳(三里屯店)# http://t.cn/zOeXzbq"},{"latitude":39.931789,"longitude":116.450737,"text":"， 我在#丸金拉面# http://t.cn/zWUydgy"},{"latitude":39.934601,"longitude":116.455002,"text":"迎接2猫入住 我在#无敌家(三里屯店)# http://t.cn/zW3Q2jJ"},{"latitude":39.935253,"longitude":116.449921,"text":"。 我在#南京大牌档(世茂百货店)# http://t.cn/zOgpgzM"},{"latitude":39.933949,"longitude":116.455208,"text":"， 我在#MEGABOX 美嘉欢乐影城(三里屯店)# http://t.cn/zOg9hp9"},{"latitude":39.936203,"longitude":116.454018,"text":"撸面 我在#三里屯面馆# http://t.cn/zOgkQkL"},{"latitude":39.959511,"longitude":116.440598,"text":"下班未到刷卡点，正是系统升级时 我在#人人网 Office# http://t.cn/zOgOGsj"},{"latitude":39.959511,"longitude":116.440598,"text":"分享图片 我在#人人网 Office# http://t.cn/zOgOGsj"},{"latitude":39.939342,"longitude":116.44445,"text":"背痛已无药可医 我在:http://t.cn/zWrjRVe"},{"latitude":39.930157,"longitude":116.450508,"text":"分享图片 我在#大渔铁板烧(工体店)# http://t.cn/zOgW6RD"},{"latitude":39.935379,"longitude":116.453239,"text":"再撸一次蝙蝠侠 我在#美嘉欢乐影城三里屯店# http://t.cn/zOgYRxP"},{"latitude":39.928539,"longitude":116.45797,"text":"又撸平娃 我在#平娃三宝 中纺街店# http://t.cn/zOg0YKV"},{"latitude":39.933949,"longitude":116.455208,"text":"分享图片 我在#MEGABOX 美嘉欢乐影城(三里屯店)# http://t.cn/zOg9hp9"},{"latitude":39.936203,"longitude":116.454018,"text":"， 我在#三里屯面馆# http://t.cn/zOgkQkL"},{"latitude":39.959511,"longitude":116.440598,"text":"分享图片 我在#人人网 Office# http://t.cn/zOgOGsj"},{"latitude":39.94046,"longitude":116.432243,"text":"。 我在#太兴餐厅 东直门店# http://t.cn/zOeLK9q"},{"latitude":39.936203,"longitude":116.454018,"text":"分享图片 我在#三里屯面馆# http://t.cn/zOgkQkL"},{"latitude":39.932529,"longitude":116.694649,"text":"时间还早，本想跟算命的聊10块钱的，结果人老人家正在收摊儿 我在#京东驾校# http://t.cn/zOg1Woj"},{"latitude":39.935253,"longitude":116.449921,"text":"快 我在#南京大牌档(世茂百货店)# http://t.cn/zOgpgzM"},{"latitude":39.913212,"longitude":116.471321,"text":"。 我在#隐泉日本料理 光华东路店 Hatsune# http://t.cn/zOgXZN1"},{"latitude":39.933949,"longitude":116.455208,"text":"WYWH 我在#MEGABOX 美嘉欢乐影城(三里屯店)# http://t.cn/zOg9hp9"},{"latitude":39.932545,"longitude":116.453804,"text":"开始鉴定 我在#长野拉面# http://t.cn/zOelpqs"},{"latitude":31.732759,"longitude":118.870956,"text":"今天又能看到人间炼狱般的北京了 http://t.cn/zOriQ9s"},{"latitude":31.732759,"longitude":118.870956,"text":"故都 http://t.cn/zOriQ9s"},{"latitude":39.86503,"longitude":116.379,"text":"我在这里: #北京南站# http://t.cn/SVKoUr"},{"latitude":39.49822,"longitude":116.730896,"text":"我在这里: #廊坊市区# http://t.cn/zO9uXod"},{"latitude":39.92836,"longitude":116.4568,"text":"我在这里: #平娃三宝# 店面扩大了N倍 http://t.cn/zOc9ikM"},{"latitude":39.96107,"longitude":116.47402,"text":"我在这里: #海航大厦万豪酒店#逃班一天 http://t.cn/z0FqMwg"},{"latitude":39.97864,"longitude":116.46987,"text":"我在这里: #宜家家居#好多孕妇，好多基友 http://t.cn/SVn4S1"},{"latitude":39.93578,"longitude":116.45561,"text":"我在这里: #Apple Store# "},{"latitude":33.01508,"longitude":120.70958,"text":"终于到家了，居然有微弱的3g信号我在这里: #大丰市# http://t.cn/z0klyNl"},{"latitude":39.103439,"longitude":117.178452,"text":"我在这里: #南开大学(东门)# http://t.cn/SIUqDQ"},{"latitude":39.933979,"longitude":116.454651,"text":"我在这里：#北京美嘉欢乐影城(三里屯店)# 有这么好看吗？ http://t.cn/S4txjk"},{"latitude":39.934177,"longitude":116.446663,"text":"南京大排档我在这里：#朝阳区#"},{"latitude":39.965,"longitude":116.442398,"text":"我在这里：#老友记# http://t.cn/ScK2x6"},{"latitude":39.931789,"longitude":116.450737,"text":"我在这里：#丸金拉面# http://t.cn/SbR9EN"},{"latitude":116.0,"longitude":116.0,"text":"@navigator182 @Thomas 贵司有歇脚的地方吗？"}];
+    updateMapPoints(data);
+</script>
 </body>
 </html>
