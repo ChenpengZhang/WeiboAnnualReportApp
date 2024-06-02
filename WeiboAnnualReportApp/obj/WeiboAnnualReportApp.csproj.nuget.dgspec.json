@@ -56,6 +56,10 @@
             "System.Diagnostics.DiagnosticSource": {
               "target": "Package",
               "version": "[8.0.1, )"
+            },
+            "pythonnet": {
+              "target": "Package",
+              "version": "[3.0.3, )"
             }
           },
           "imports": [

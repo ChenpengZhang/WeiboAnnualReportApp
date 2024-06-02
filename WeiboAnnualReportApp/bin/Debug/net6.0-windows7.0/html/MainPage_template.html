@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=Edge">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>微博旅行日记</title>
+<style>
+body, html {
+margin: 0;
+padding: 0;
+overflow: hidden;
+height: 100%;
+font-family: Arial, sans-serif;
+}
+ #map_container {
+        width: 100%;
+        height: 100%;
+        margin: 0;
+ }
+
+.page {
+position: absolute;
+width: 100%;
+height: 100%;
+display: flex;
+justify-content: center;
+align-items: center;
+transition: transform 0.5s ease-in-out;
+}
+.s-fcRed{
+color: red; /* 设置文字颜色为红色 */
+font-style: italic; /* 设置文字为斜体 */
+}
+.text-wrapper {
+position: absolute;
+top: 50%; /* 将文字包裹容器置于页面的垂直中间 */
+transform: translateY(-50%);
+width: 100%;
+text-align: center; /* 文字居中 */
+}
+
+.text-wrapper h1 {
+letter-spacing: .2em;
+font-size: 29px;
+color: #2c3e50; /* 深蓝色 */
+font-family: 'Georgia', serif; /* 经典衬线字体 */
+text-shadow: 2px 2px #f1c40f; /* 黄色阴影 */
+}
+.text-wrapper p {
+letter-spacing: .3em;
+font-size: 14px;
+color: #8e44ad; /* 紫色 */
+font-family: 'Arial', sans-serif; /* 无衬线字体 */
+background-color: #f1c40f; /* 黄色背景 */
+display: inline-block;
+padding: 5px;
+border-radius: 5px;
+}
+
+ .fancy-text {
+font-family: 'Comic Sans MS', cursive, sans-serif;
+font-size: 18px;
+color: #e74c3c; /* 红色 */
+text-transform: uppercase; /* 全大写 */
+}
+.highlight {
+font-family: 'Courier New', Courier, monospace;
+font-size: 16px;
+color: #27ae60; /* 绿色 */
+background-color: #ecf0f1; /* 浅灰色背景 */
+padding: 5px;
+border-radius: 3px;
+}
+
+
+
+
+
+
+#page1 {
+background-color: #f1c40f;
+transform: translateY(0);
+}
+#page2 {
+background-color: #add8e6;
+transform: translateY(100%);
+}
+#page3 {
+background-color: #3498db;
+transform: translateY(200%);
+}
+#page4 {
+background-color: #3498db;
+transform: translateY(300%);
+}
+#page5 {
+background-color: #ffcccb;
+transform: translateY(400%);
+}
+#page6 {
+background-color: #90ee90;
+transform: translateY(500%);
+}
+</style>
+</head>
+<body>
+<div class="container" id="container">
+<div class="page" id="page1">
+<div class="text-wrapper">
+<h1 style="letter-spacing:.2em;font-size:29px;">我的旅行日记</h1>
+<p style="letter-spacing:.3em;font-size:14px;">二零一四年度微博使用报告</p>
+</div>
+</div>
+<div class="page" id="page2">
+<div class="text-wrapper">
+<h1>这一年里</h1>
+<p>你一共去了<em class="s-fcRed">{phrase1_placeholder}</em>个城市</p>
+<p>待得最久的是<em class="s-fcRed">{phrase2_placeholder}</em></p>
+<p>&nbsp;</p>
+<p>你旅行的风格成谜</p>
+<p>喜欢在<em class="s-fcRed">{phrase3_placeholder}</em>发表微博</p>
+<p>&nbsp;</p>
+<p>你最喜欢说的词语是<em class="s-fcRed">{phrase4_placeholder}</em></p>
+</div>
+</div>
+<div class="page" id="page3">
+<div class="text-wrapper">
+<p><em class="s-fcRed">{phrase5_placeholder}</em></p>
+<p>这一天你睡得很晚</p>
+<p><em class="s-fcRed">{phrase6_placeholder}</em>还在于微博相伴</p>
+<p>&nbsp;</p>
+<p>那一刻你发了个微博</p>
+<p><em class="s-fcRed">{phrase7_placeholder}</em></p>
+</div>
+</div>
+<div class="page" id="page4">
+
+<div id="map_container"></div>
+
+</div>
+<div class="page" id="page5">
+<div class="text-wrapper">
+<p>这是第五页</p>
+</div>
+</div>
+<div class="page" id="page6">
+<div class="text-wrapper">
+<p>这是第六页</p>
+</div>
+</div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+let currentPage = 0;
+const pages = document.querySelectorAll('.page');
+const switchPage = (direction) => {
+if (direction === 'up' && currentPage > 0) {
+currentPage--;
+} else if (direction === 'down' && currentPage < pages.length - 1) {
+currentPage++;
+}
+pages.forEach((page, index) => {
+page.style.transform = `translateY(${(index - currentPage) * 100}%)`;
+});
+};
+function handleScroll(event) {
+if (event.deltaY > 0) {
+switchPage('down');
+} else {
+switchPage('up');
+}
+showPage(currentPage);
+}
+window.addEventListener('wheel', handleScroll);
+});
+
+fetch('output.html')
+        .then(response => response.text())
+        .then(data => {
+            document.querySelector('#page4-content').innerHTML = data;
+        })
+        .catch(error => {
+            console.error('Error loading new content:', error);
+        });
+
+</script>
+<script src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=fpMKa6sGENtDsvgT3iA3MErslqRNK5Di"></script>
+<script src="https://unpkg.com/mapvgl/dist/mapvgl.min.js"></script>
+<script src="https://unpkg.com/mapvgl/dist/mapvgl.threelayers.min.js"></script>
+<script>
+    var bmapgl = new BMapGL.Map('map_container');
+    var point = new BMapGL.Point(109.792816,27.702774);
+    bmapgl.centerAndZoom(point, 1);
+
+    var flyLineView = new mapvgl.View({
+        map: bmapgl
+    });
+
+    var pointView = new mapvgl.View({
+        map: bmapgl
+    });
+
+    var layer = new mapvgl.PointLayer({
+        color: 'rgba(102, 0, 204, 0.8)',
+        shape: 'icon',
+        blend: 'lighter',
+        size: 15
+    });
+    pointView.addLayer(layer);
+
+    var flyLineLayer = new mapvgl.FlyLineLayer({
+        color: 'rgba(50, 50, 200, 1)',
+        textureColor: 'rgba(50, 50, 200, 1)',
+        textureWidth: 10,
+        textureLength: 30
+    });
+    flyLineView.addLayer(flyLineLayer);
+
+
+
+    function createLabel(content) {
+        var label = new BMapGL.Label(content, { offset: new BMapGL.Size(10, -25) });
+        label.setStyle({
+            display: "none",
+            color: "black",
+            backgroundColor: "rgba(255, 174, 238, 0.3)", 
+            borderColor: "rgba(102, 0, 204, 0.6)",
+            borderStyle: "solid",
+            borderWidth: "1px",
+            borderRadius: "5px",
+            fontSize: "12px",
+            height: "20px",
+            lineHeight: "20px",
+            fontFamily: "微软雅黑"
+        });
+        return label;
+    }
+
+    function updateMapPoints(data) {
+        var pointsData = data.map(function(item) {
+            return {
+                geometry: {
+                    type: 'Point',
+                    coordinates: [item.longitude, item.latitude]
+                },
+                properties: {
+                    text: item.text
+                }
+            };
+        });
+
+        var flyLineData = [];
+        var curve = new mapvgl.BezierCurve();
+        for (var i = 0; i < data.length; i++) {
+            var item = data[i];
+            var point = new BMapGL.Point(item.longitude, item.latitude);
+
+            // 使用Base64编码的SVG图标
+            var customIcon = 'data:image/svg+xml;base64,Cjxzdmcgd2lkdGg9IjI0IiBoZWlnaHQ9IjI0IiB2aWV3Qm94PSIwIDAgMjQgMjQiIGZpbGw9Im5vbmUiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+CiAgPHBhdGggZD0iTTEyIDBDOC4xMzQgMCA1IDMuMTM0IDUgN0M1IDExLjI1IDEyIDIxIDEyIDIxQzEyIDIxIDE5IDExLjI1IDE5IDdDMTkgMy4xMzQgMTUuODY2IDAgMTIgMFpNMTIgOS41QzEwLjYxOSA5LjUgOS41IDguMzgxIDkuNSA3QzkuNSA1LjYxOSAxMC42MTkgNC41IDEyIDQuNUMxMy4zODEgNC41IDE0LjUgNS42MTkgMTQuNSA3QzE0LjUgOC4zODEgMTMuMzgxIDkuNSAxMiA5LjVaIiBmaWxsPSJyZ2IoMTUxLDExMiwyNTUpIi8+Cjwvc3ZnPgo=';
+
+            var icon = new BMapGL.Icon(customIcon, new BMapGL.Size(15, 15));
+            icon.setImageSize(new BMapGL.Size(15, 15)); // 设置图标大小
+
+            var marker = new BMapGL.Marker(point, { icon: icon });
+            var label = createLabel(item.text);
+            marker.setLabel(label);
+
+            marker.addEventListener("mouseover", function() {
+                var label = this.getLabel();
+                label.setStyle({ display: "block" });
+            });
+            marker.addEventListener("mouseout", function() {
+                var label = this.getLabel();
+                label.setStyle({ display: "none" });
+            });
+
+            bmapgl.addOverlay(marker);
+
+            if (i > 0) {
+                curve.setOptions({
+                    start: [data[i - 1].longitude, data[i - 1].latitude],
+                    end: [item.longitude, item.latitude]
+                });
+
+                var curveModelData = curve.getPoints();
+                flyLineData.push({
+                    geometry: {
+                        type: 'LineString',
+                        coordinates: curveModelData
+                    }
+                });
+            }
+        }
+
+        flyLineLayer.setData(flyLineData);
+  
+    }
+
+  
+    // 调用updateMapPoints函数并传递数据
+    var data = {data_placeholder};
+    updateMapPoints(data);
+</script>
+</body>
+</html>

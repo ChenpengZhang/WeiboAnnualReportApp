@@ -2,6 +2,7 @@ using System.Diagnostics;
 using System.Data;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
+using Python.Runtime;
 
 
 namespace WeiboAnnualReportApp
@@ -9,6 +10,7 @@ namespace WeiboAnnualReportApp
     public partial class FormMain : Form
     {
         private string connectionString = "server=127.0.0.1;user=root;password=lys150619; database=苏州市微博数据";
+         
         
         public FormMain()
         {
@@ -33,6 +35,7 @@ namespace WeiboAnnualReportApp
 
         private void btnCreateReport_Click(object sender, EventArgs e)
         {
+            
             string id = textBox1.Text;
             if (string.IsNullOrEmpty(id))
             {
@@ -71,13 +74,12 @@ namespace WeiboAnnualReportApp
             {
                 MessageBox.Show("No data found for the provided ID.");
             }
+            processPython();
         }
-
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
-
 
         private void GenerateHtmlFile(DataTable dt)
         {
@@ -124,13 +126,24 @@ namespace WeiboAnnualReportApp
                 MessageBox.Show("Failed to open the HTML file: " + ex.Message);
             }
         }
+
+        private void processPython()
+        {
+            Runtime.PythonDLL = @"C:\Users\86151\AppData\Local\Programs\Python\Python38\python38.dll";
+            PythonEngine.Initialize();
+            using (Py.GIL()) 
+            { 
+                var pythonScript = Py.Import("PythonProcessor"); 
+                var message = new PyString("这个东西真心很赞"); 
+                var result = pythonScript.InvokeMethod("process_sentence", new PyObject[] { message }); 
+            } 
+        }
     }
+
+
 }
 
-
-
-
-
+# region 注释/过期代码
 /*private void ShowMapWithPoints0(DataTable dt)
        {
            StringBuilder htmlBuilder = new StringBuilder();
@@ -435,3 +448,4 @@ layer.setData(data);
 
 
 //File.WriteAllText(mainHtmlPath, html);
+# endregion
