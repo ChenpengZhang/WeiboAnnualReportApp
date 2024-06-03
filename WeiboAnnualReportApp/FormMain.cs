@@ -3,26 +3,48 @@ using System.Data;
 using MySql.Data.MySqlClient;
 using Newtonsoft.Json;
 using Python.Runtime;
+using MyMapObjects;
+using System.Globalization;
+using System.Text;
 
 
 namespace WeiboAnnualReportApp
 {
     public partial class FormMain : Form
     {
+        #region 字段
         private string connectionString = "server=127.0.0.1;user=root;password=lys150619; database=苏州市微博数据";
-         
-        
+        private moMapcontrol moMap = new moMapcontrol();
+        private bool booltest = false;
+        #endregion
+
+        #region 构造函数
         public FormMain()
         {
             InitializeComponent();
+            // 初始化一个图层文件以进行相交判断
+            String sFileName = "D:\\datasource\\WeiboAnnualReportApp\\WeiboAnnualReportApp\\bin\\Debug\\net6.0-windows7.0\\cities.shp";
+            MyMapObjects.moMapLayer sLayer;
+            try
+            {
+                sLayer = DataIOTools.LoadMapLayerFromShapeFile(sFileName);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return;
+            }
+            moMap.Layers.Add(sLayer);  // 在control控件中添加一个城市图层
         }
+        #endregion
 
+        #region 控件事件
         private void btnOpenReport_Click(object sender, EventArgs e)
         {
-            string id = textBox1.Text;
-            if (string.IsNullOrEmpty(id))
+            
+            if (booltest==false)
             {
-                MessageBox.Show("Please enter an ID");
+                MessageBox.Show("请先生成用户年度报告");
                 return;
             }
 
@@ -39,10 +61,11 @@ namespace WeiboAnnualReportApp
             string id = textBox1.Text;
             if (string.IsNullOrEmpty(id))
             {
-                MessageBox.Show("Please enter an ID");
+                MessageBox.Show("请输入你的用户ID");
                 return;
             }
-            string query = $"SELECT latitude, longitude,text FROM 苏州市微博数据.geotaggedweibo WHERE 苏州市微博数据.geotaggedweibo.userid = @id";
+            booltest = true;
+            string query = $"SELECT latitude,longitude,text,created_at FROM 苏州市微博数据.geotaggedweibo WHERE 苏州市微博数据.geotaggedweibo.userid = @id and 苏州市微博数据.geotaggedweibo.latitude < 90";
             DataTable dt = new DataTable();
             using (MySqlConnection conn = new MySqlConnection(connectionString))
             {
@@ -74,12 +97,16 @@ namespace WeiboAnnualReportApp
             {
                 MessageBox.Show("No data found for the provided ID.");
             }
-            processPython();
+            
+            AnalyzeAndDisplayData(dt);
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
 
         }
+        #endregion
+
+        #region 私有函数
 
         private void GenerateHtmlFile(DataTable dt)
         {
@@ -94,14 +121,53 @@ namespace WeiboAnnualReportApp
                 text = row.Field<string>("text")
             }).ToList();
 
+            String topCity;
+            int numCity;
+            getCity(dt, out topCity, out numCity);  // 获取去过最多的城市和去过的城市数量并赋值到两个变量上
+
+            Double avgSentiment;  // 感情得分，1为最正向，0为最负向
+            Dictionary<string, int> wordFreqMap;  // 词频分布
+            processPython(dt, out avgSentiment, out wordFreqMap);  // 获取平均的感情得分和词频分布
+
+            // 在这里可以对感情得分进行一些解释和处理
+            // 对感情进行分类
+            String comment;
+            if (avgSentiment > 0.8)
+            {
+                comment = "看起来你的一年过得非常开心，充满了阳光和活力！";
+            }
+            else if(avgSentiment > 0.6 && avgSentiment <= 0.8)
+            {
+                comment = "你的一年里有很多愉快的时光，充满了积极的能量！";
+            }
+            else if (avgSentiment > 0.4 && avgSentiment <= 0.6)
+            {
+                comment = "你的一年里经历了各种各样的事情，有高潮也有低谷，总体来说是一个平淡的一年。";
+            }
+            else if (avgSentiment > 0.2 && avgSentiment <= 0.4)
+            {
+                comment = "一年过去了，你似乎遇到了一些挑战和困难，但还是坚持着前行。";
+            }
+            else
+            {
+                comment = "你的一年过得似乎有些不顺利，遇到了不少挑战和困难。";
+            }
+            // 具体用什么词还没想好
+
+            // 在这里可以对词频分布进行一些处理
+            // 1. 获取说的最多的词语
+            KeyValuePair<string, int> maxEntry = wordFreqMap.OrderByDescending(entry => entry.Value).First();
+            String topWord = maxEntry.Key;
+
             string json = JsonConvert.SerializeObject(points);
-            string phrase1 = "  ";//去过多少城市
-            string phrase2 = "  ";//待得最久的城市
-            string phrase3 = "  ";//喜欢在什么时间发微博（上午/下午/晚上）
-            string phrase4 = "  ";//最喜欢说的词语
-            string phrase5 = "  ";//睡的最晚的一天
-            string phrase6 = "  ";//几点钟睡的
-            string phrase7 = "  ";//那个时间段发的微博
+            string phrase1 = numCity.ToString();//去过多少城市
+            string phrase2 = topCity;  //待得最久的城市
+            string phrase3 = "上午";  //喜欢在什么时间发微博（上午/下午/晚上）
+            string phrase4 = topWord;  //最喜欢说的词语
+            string phrase5 = "3月6日";  //睡的最晚的一天
+            string phrase6 = "4:25";  //几点钟睡的
+            string phrase7 = "你见过凌晨的苏州吗";  //那个时间段发的微博
+            string phrase8 = comment;  // 对用户情感的一个评价
 
             string template = File.ReadAllText(templateFilePath);
             string outputContent = template.Replace("{data_placeholder}", json)
@@ -127,23 +193,156 @@ namespace WeiboAnnualReportApp
             }
         }
 
-        private void processPython()
+        private void processPython(DataTable dt, out Double avgSentiment, out Dictionary<string, int> wordFreqMap)
         {
             Runtime.PythonDLL = @"C:\Users\86151\AppData\Local\Programs\Python\Python38\python38.dll";
-            PythonEngine.Initialize();
-            using (Py.GIL()) 
-            { 
-                var pythonScript = Py.Import("PythonProcessor"); 
-                var message = new PyString("这个东西真心很赞"); 
-                var result = pythonScript.InvokeMethod("process_sentence", new PyObject[] { message }); 
-            } 
+            PythonEngine.Initialize();  // 初始化python启动器
+            var points = dt.AsEnumerable().Select(row => new
+            {
+                latitude = row.Field<double>("latitude"),
+                longitude = row.Field<double>("longitude"),
+                text = row.Field<string>("text")
+            }).ToList();  // 获取datatable的信息
+            wordFreqMap = new Dictionary<string, int>();  // 词语频次表
+            List<Double> sentiments = new List<Double>();
+            List<string> stopWords = new List<string>();
+
+            // 读取停用词表
+            string[] lines = File.ReadAllLines("wordDisable.txt");
+            foreach (string line in lines)
+            {
+                stopWords.Add(line.Trim());
+            }
+
+            foreach (var point in points)
+            {
+                using (Py.GIL())
+                {
+                    var pythonScript = Py.Import("PythonProcessor");
+                    var message = new PyString(point.text);
+                    var sentiment = pythonScript.InvokeMethod("process_sentiment", new PyObject[] { message });
+                    sentiments.Add(sentiment.ToDouble(CultureInfo.InvariantCulture));
+                    var sWords = pythonScript.InvokeMethod("process_words", new PyObject[] { message });  // 获得词语列表
+                    var pyList = sWords.As<PyList>();  // 将Python列表转换为动态对象
+                    List<string> words = new List<string>();
+                    foreach (var item in pyList)
+                    {
+                        words.Add(item.ToString(CultureInfo.InvariantCulture));
+                    }
+                    foreach (var word in words)
+                    {   // 如果词语不在停用词表内
+                        if (!stopWords.Contains(word))
+                        {
+                            if (wordFreqMap.ContainsKey(word))
+                            {
+                                wordFreqMap[word]++;
+                            }
+                            else
+                            {
+                                wordFreqMap.Add(word, 1);
+                            }
+                        }
+                    }
+                }
+            }
+            avgSentiment = sentiments.Sum() / sentiments.Count;
         }
+
+        private void getCity(DataTable dt, out String topCity, out int numCity)
+        {
+            var points = dt.AsEnumerable().Select(row => new
+            {
+                latitude = row.Field<double>("latitude"),
+                longitude = row.Field<double>("longitude"),
+                text = row.Field<string>("text")
+            }).ToList();
+            List<String> sCities = new List<String>();  // 记录所有微博的城市顺序表
+            foreach( var point in points )
+            {
+                moPoint sPoint = new moPoint(point.longitude, point.latitude);  // 发微博的点
+                moFeatures sFeatures = moMap.Layers.GetItem(0).SearchFeaturesByPoint(sPoint, 0);  // 查找包含点的要素
+                if (sFeatures.Count != 0)
+                {
+                    moAttributes sAttributes = sFeatures.GetItem(0).Attributes;
+                    sCities.Add((String)sAttributes.GetItem(1));  // 将该微博的城市添加到表中
+                }
+            }
+            Dictionary<string, int> freqMap = new Dictionary<string, int>();  // 创建一个城市频率表，用于统计哪个城市发博最多
+            foreach (string str in sCities)
+            {
+                if (freqMap.ContainsKey(str))
+                {
+                    freqMap[str]++;
+                }
+                else
+                {
+                    freqMap.Add(str, 1);
+                }
+            }
+            KeyValuePair<string, int> maxEntry = freqMap.OrderByDescending(entry => entry.Value).First();
+            topCity = maxEntry.Key;
+            numCity = freqMap.Count;
+        }
+        private Dictionary<DateTime, string> postInfo = new Dictionary<DateTime, string>();
+        private void AnalyzeAndDisplayData(DataTable dt)
+        {
+            List<DateTime> postTimes = new List<DateTime>();
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string postTimeString = row["created_at"].ToString();
+                string postText = row["text"].ToString();
+                if (DateTime.TryParseExact(postTimeString, "ddd MMM dd HH:mm:ss K yyyy", CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime postTime))
+                {
+                    postTimes.Add(postTime);
+                    postInfo[postTime] = postText;
+                }
+            }
+
+            if (postTimes.Count == 0)
+            {
+                MessageBox.Show("No valid post times found.");
+                return;
+            }
+
+            /*
+            var latestDay = postTimes.GroupBy(t => t.Hour)
+                                     .OrderByDescending(g => g.Key)
+                                     .FirstOrDefault();
+            */
+            //var latestDay = postTimes.Max(t => t.TimeOfDay);
+            //找到最晚的发帖时间
+            var latestPost = postTimes.GroupBy(p => p.Date)
+                                        .Select(g => g.OrderByDescending(p => p.TimeOfDay).First())
+                                        .OrderByDescending(p => p.TimeOfDay).FirstOrDefault();
+            //最晚发帖时间对应的内容
+            var latestPostText = postInfo[latestPost];
+
+            // 按照小时统计发帖数量
+            var mostActiveHour = postTimes.GroupBy(t => t.Hour)
+                                          .OrderByDescending(g => g.Count())
+                                          .FirstOrDefault();
+
+            // 输出结果
+            StringBuilder resultMessage = new StringBuilder();
+
+            if (latestPost != null)
+            {
+                resultMessage.AppendLine($"Latest post Time:  {latestPost}内容{latestPostText}");
+
+            }
+            if (mostActiveHour != null)
+            {
+                resultMessage.AppendLine($"Most active hour: {mostActiveHour.Key}:00 with {mostActiveHour.Count()} posts");
+            }
+
+            MessageBox.Show(resultMessage.ToString());
+        }
+        #endregion
     }
-
-
 }
 
-# region 注释/过期代码
+    # region 注释/过期代码
 /*private void ShowMapWithPoints0(DataTable dt)
        {
            StringBuilder htmlBuilder = new StringBuilder();

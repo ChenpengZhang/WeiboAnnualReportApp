@@ -78,10 +78,10 @@
             AutoScaleDimensions = new SizeF(13F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1159, 636);
-            Controls.Add(dataGridView1);
             Controls.Add(textBox1);
             Controls.Add(btoCreateReport);
             Controls.Add(btnopenReport);
+            Controls.Add(dataGridView1);
             Margin = new Padding(6, 5, 6, 5);
             Name = "FormMain";
             StartPosition = FormStartPosition.CenterScreen;

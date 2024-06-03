@@ -38,3 +38,5 @@ D:\datasource\WeiboAnnualReportApp\WeiboAnnualReportApp\bin\Debug\net6.0-windows
 D:\datasource\WeiboAnnualReportApp\WeiboAnnualReportApp\obj\Debug\net6.0-windows7.0\WeiboAnn.01C95473.Up2Date
 D:\datasource\WeiboAnnualReportApp\WeiboAnnualReportApp\bin\Debug\net6.0-windows7.0\System.Diagnostics.DiagnosticSource.dll
 D:\datasource\WeiboAnnualReportApp\WeiboAnnualReportApp\bin\Debug\net6.0-windows7.0\Python.Runtime.dll
+D:\datasource\WeiboAnnualReportApp\WeiboAnnualReportApp\bin\Debug\net6.0-windows7.0\MyMapObjects.dll
+D:\datasource\WeiboAnnualReportApp\WeiboAnnualReportApp\bin\Debug\net6.0-windows7.0\MyMapObjects.pdb
