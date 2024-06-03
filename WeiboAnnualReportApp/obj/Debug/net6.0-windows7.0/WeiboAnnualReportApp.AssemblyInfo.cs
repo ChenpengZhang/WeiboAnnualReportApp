@@ -14,7 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WeiboAnnualReportApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6843477eafb2ffa32eab928683f3605cb07a171a")]
+<<<<<<<<< Temporary merge branch 1
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+719c025577920349be1be8efb8b2c70b8636132e")]
+=========
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c7ecbcedafac6f4943d4d3634cd49b1fe07189d5")]
+>>>>>>>>> Temporary merge branch 2
 [assembly: System.Reflection.AssemblyProductAttribute("WeiboAnnualReportApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WeiboAnnualReportApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
