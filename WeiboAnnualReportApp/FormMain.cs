@@ -98,7 +98,7 @@ namespace WeiboAnnualReportApp
                 MessageBox.Show("No data found for the provided ID.");
             }
             
-            AnalyzeAndDisplayData(dt);
+            
         }
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
@@ -159,15 +159,23 @@ namespace WeiboAnnualReportApp
             KeyValuePair<string, int> maxEntry = wordFreqMap.OrderByDescending(entry => entry.Value).First();
             String topWord = maxEntry.Key;
 
+            string timesection;
+            string latestdate;
+            string latesttime;
+            string latesttext;
+            string posts;
+            Analyzetime(dt, out timesection, out latestdate, out latesttime, out latesttext,out posts);
+
             string json = JsonConvert.SerializeObject(points);
             string phrase1 = numCity.ToString();//去过多少城市
             string phrase2 = topCity;  //待得最久的城市
-            string phrase3 = "上午";  //喜欢在什么时间发微博（上午/下午/晚上）
+            string phrase3 = timesection;  //喜欢在什么时间发微博（上午/下午/晚上）
             string phrase4 = topWord;  //最喜欢说的词语
-            string phrase5 = "3月6日";  //睡的最晚的一天
-            string phrase6 = "4:25";  //几点钟睡的
-            string phrase7 = "你见过凌晨的苏州吗";  //那个时间段发的微博
+            string phrase5 = latestdate;  //睡的最晚的一天
+            string phrase6 = latesttime;  //几点钟睡的
+            string phrase7 = latesttext;  //那个时间段发的微博
             string phrase8 = comment;  // 对用户情感的一个评价
+            string phrase9 = posts;    //最多时间点发表微博数
 
             string template = File.ReadAllText(templateFilePath);
             string outputContent = template.Replace("{data_placeholder}", json)
@@ -177,7 +185,9 @@ namespace WeiboAnnualReportApp
             .Replace("{phrase4_placeholder}", phrase4)
             .Replace("{phrase5_placeholder}", phrase5)
             .Replace("{phrase6_placeholder}", phrase6)
-            .Replace("{phrase7_placeholder}", phrase7);
+            .Replace("{phrase7_placeholder}", phrase7)
+            .Replace("{phrase8_placeholder}", phrase8)
+            .Replace("{phrase9_placeholder}", phrase9); 
 
             File.WriteAllText(outputFilePath, outputContent);
         }
@@ -284,7 +294,7 @@ namespace WeiboAnnualReportApp
             numCity = freqMap.Count;
         }
         private Dictionary<DateTime, string> postInfo = new Dictionary<DateTime, string>();
-        private void AnalyzeAndDisplayData(DataTable dt)
+        private void Analyzetime(DataTable dt,out String timesection ,out String latestdate,out String latesttime,out String latesttext , out String posts)
         {
             List<DateTime> postTimes = new List<DateTime>();
 
@@ -299,11 +309,11 @@ namespace WeiboAnnualReportApp
                 }
             }
 
-            if (postTimes.Count == 0)
-            {
-                MessageBox.Show("No valid post times found.");
-                return;
-            }
+            //if (postTimes.Count == 0)
+            //{
+            //    MessageBox.Show("No valid post times found.");
+            //    return;
+            //}
 
             /*
             var latestDay = postTimes.GroupBy(t => t.Hour)
@@ -323,20 +333,26 @@ namespace WeiboAnnualReportApp
                                           .OrderByDescending(g => g.Count())
                                           .FirstOrDefault();
 
+            latesttext = latestPostText;
+            latestdate = latestPost.Year.ToString()+"年"+latestPost.Month.ToString()+"月"+latestPost.Day.ToString()+"日";
+            timesection = mostActiveHour.Key.ToString();
+            posts = mostActiveHour.Count().ToString();
+            latesttime = latestPost.TimeOfDay.ToString();
+
             // 输出结果
-            StringBuilder resultMessage = new StringBuilder();
+            //StringBuilder resultMessage = new StringBuilder();
 
-            if (latestPost != null)
-            {
-                resultMessage.AppendLine($"Latest post Time:  {latestPost}内容{latestPostText}");
+            //if (latestPost != null)
+            //{
+            //    resultMessage.AppendLine($"Latest post Time:  {latestPost}内容{latestPostText}");
 
-            }
-            if (mostActiveHour != null)
-            {
-                resultMessage.AppendLine($"Most active hour: {mostActiveHour.Key}:00 with {mostActiveHour.Count()} posts");
-            }
+            //}
+            //if (mostActiveHour != null)
+            //{
+            //    resultMessage.AppendLine($"Most active hour: {mostActiveHour.Key}:00 with {mostActiveHour.Count()} posts");
+            //}
 
-            MessageBox.Show(resultMessage.ToString());
+            //MessageBox.Show(resultMessage.ToString());
         }
         #endregion
     }

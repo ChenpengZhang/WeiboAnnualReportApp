@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("WeiboAnnualReportApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9082b03568524e8774c60f489484a0012f2d9636")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+cf57b6e685db86581fef33193aeb8773b3aab0c6")]
 [assembly: System.Reflection.AssemblyProductAttribute("WeiboAnnualReportApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("WeiboAnnualReportApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
