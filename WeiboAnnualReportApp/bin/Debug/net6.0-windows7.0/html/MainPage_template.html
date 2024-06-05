@@ -28,10 +28,11 @@ justify-content: center;
 align-items: center;
 transition: transform 0.5s ease-in-out;
 }
-.s-fcRed{
+
+.Red{
 color: red; /* 设置文字颜色为红色 */
-font-style: italic; /* 设置文字为斜体 */
 }
+
 .text-wrapper {
 position: absolute;
 top: 50%; /* 将文字包裹容器置于页面的垂直中间 */
@@ -39,28 +40,80 @@ transform: translateY(-50%);
 width: 100%;
 text-align: center; /* 文字居中 */
 }
+
+.text-head {
+letter-spacing: .2em;
+font-size: 50px;
+color: #2c3e50; /* 深蓝色 */
+font-family: 'Georgia', serif; /* 经典衬线字体 */
+text-shadow: 2px 2px #f1c40f; /* 黄色阴影 */
+}
+
+.text-front {
+letter-spacing: .3em;
+font-size: 14px;
+color: #8e44ad; /* 紫色 */
+font-family: 'Arial', sans-serif; /* 无衬线字体 */
+
+}
+
+ .fancy-text {
+font-family: 'Comic Sans MS', cursive, sans-serif;
+font-size: 18px;
+color: #e74c3c; /* 红色 */
+text-transform: uppercase; /* 全大写 */
+}
+
+.highlight {
+font-family: 'Courier New', Courier, monospace;
+font-size: 16px;
+color: #27ae60; /* 绿色 */
+}
+
+ .arrow {
+    width: 100px;
+    height: 100px;
+    background-image: url('Down_Arrow_fire_orange.png');
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0 auto;
+    animation: bounce 2s infinite;
+  }
+  @keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+      transform: translateY(0);
+    }
+    40% {
+      transform: translateY(-30px);
+    }
+    60% {
+      transform: translateY(-15px);
+    }
+  }
+
+
 #page1 {
-background-color: #f1c40f;
+background-color: #fffacd;
 transform: translateY(0);
 }
 #page2 {
-background-color: #e74c3c;
+background-color: #add8e6;
 transform: translateY(100%);
 }
 #page3 {
-background-color: #3498db;
+background-color: #add8e6;
 transform: translateY(200%);
 }
 #page4 {
-background-color: #3498db;
+background-color: #add8e6;
 transform: translateY(300%);
 }
 #page5 {
-background-color: #3498db;
+background-color: #ffcccb;
 transform: translateY(400%);
 }
 #page6 {
-background-color: #3498db;
+background-color: #90ee90;
 transform: translateY(500%);
 }
 </style>
@@ -69,47 +122,54 @@ transform: translateY(500%);
 <div class="container" id="container">
 <div class="page" id="page1">
 <div class="text-wrapper">
-<h1 style="letter-spacing:.2em;font-size:29px;">我的旅行日记</h1>
-<p style="letter-spacing:.3em;font-size:14px;">二零一四年度微博使用报告</p>
+<h1 class="text-head">我的旅行日记</h1>
+<p  class = "text-front">二零一四年度微博使用报告</p>
+<p class="fancy-text">精彩纷呈的旅程</p>
+<p class="highlight">记录每一个美好瞬间</p>
 </div>
 </div>
+
 <div class="page" id="page2">
-<div class="text-wrapper">
-<h1>这一年里</h1>
-<p>你一共去了<em class="s-fcRed">{phrase1_placeholder}</em>个城市</p>
-<p>待得最久的是<em class="s-fcRed">{phrase2_placeholder}</em></p>
+<div class ="text-wrapper">
+<h1 class ="text-head">这一年里</h1>
+<p class = "text-front">你一共去了<em class="Red">{phrase1_placeholder}</em>个城市</p>
+<p class = "text-front">待得最久的是<em class="Red">{phrase2_placeholder}</em></p>
 <p>&nbsp;</p>
-<p>你旅行的风格成谜</p>
-<p>喜欢在<em class="s-fcRed">{phrase3_placeholder}</em>发表微博</p>
+<p class = "fancy-text">你旅行的风格成谜</p>
+<p class = "text-front">喜欢在<em class="Red">{phrase3_placeholder}点</em>发表微博</p>
+<p class = "text-front">在这个时间点一共发过<em class="Red">{phrase9_placeholder}</em>条微博~~看来这是你的开心时刻</p>
 <p>&nbsp;</p>
-<p>你最喜欢说的词语是<em class="s-fcRed">{phrase4_placeholder}</em></p>
+<p class = "text-front">你最喜欢说的词语是<em class="Red">{phrase4_placeholder}</em></p>
+<p class = "fancy-text">它陪伴你走过很多里程</p>
 </div>
 </div>
-<div class="page" id="page3">
-<div class="text-wrapper">
-<p><em class="s-fcRed">{phrase5_placeholder}</em></p>
-<p>这一天你睡得很晚</p>
-<p><em class="s-fcRed">{phrase6_placeholder}</em>还在于微博相伴</p>
-<p>&nbsp;</p>
-<p>那一刻你发了个微博</p>
-<p><em class="s-fcRed">{phrase7_placeholder}</em></p>
-</div>
-</div>
-<div class="page" id="page4">
 
-<div id="map_container"></div>
-
+<div class ="page" id="page3">
+<div class ="text-wrapper">
+<h1 class= "text-head">难忘的一天</h1>
+<p class = "text-front"><em class="Red">{phrase5_placeholder}</em></p>
+<p class = "fancy-text">这一天你睡得很晚</p>
+<p class = "text-front"><em class="Red">{phrase6_placeholder}</em>还在于微博相伴</p>
+<p>&nbsp;</p>
+<p class = "highlight">那一刻你发了个微博</p>
+<p class = "text-front"><em class="Red">{phrase7_placeholder}</em></p>
+<p class = "text-front">从你的旅行日程看来</p>
+<p class = "text-front"><em class="Red">{phrase8_placeholder}</em></p>
 </div>
+</div>
+
+<div class = "page" id = "page4">
+<div class ="text-wrapper">
+<h1 class="text-head">获取你的旅行轨迹</h1>
+<div class = "arrow"></div>
+</div>
+</div>
+
 <div class="page" id="page5">
-<div class="text-wrapper">
-<p>这是第五页</p>
+<div id="map_container"></div>
 </div>
-</div>
-<div class="page" id="page6">
-<div class="text-wrapper">
-<p>这是第六页</p>
-</div>
-</div>
+
+
 </div>
 <script>
 document.addEventListener('DOMContentLoaded', () => {
@@ -136,14 +196,6 @@ showPage(currentPage);
 window.addEventListener('wheel', handleScroll);
 });
 
-fetch('output.html')
-        .then(response => response.text())
-        .then(data => {
-            document.querySelector('#page4-content').innerHTML = data;
-        })
-        .catch(error => {
-            console.error('Error loading new content:', error);
-        });
 
 </script>
 <script src="https://api.map.baidu.com/api?v=1.0&type=webgl&ak=fpMKa6sGENtDsvgT3iA3MErslqRNK5Di"></script>
